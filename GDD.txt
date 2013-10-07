@@ -1,0 +1,45 @@
+Jeu en 2 Phases
+
+Phase plateformer : on bouge un petit perso.
+Phase godgame : On bouge des elements on bouge les elements du décor.
+
+univers : 
+Un homme qui revie des moment de sa vie dans un monde étrange (limbes) qui cherche à se souvenir, à recuperer ses souvenirs, 
+jusqu'à arriver au moment de sa mort. A chaque souvenir qu'il revit, le gameplay se complique de dégrade.
+
+Photo qui fige le temps, avec un flash, l'éclaircissement reste un peu et plus on l'uttilise plus l'écran est clair 
+et a la fin si on l'uttilise trop c'est injouable.
+Le début de l'aventure est Open World puis les derniers souvenirs sont linéeaires et s'enchaines dans un ordre précis
+
+
+QTE qui deternminent l'issu de l'histoire et d'autres trucs
+
+Idée de gameplay : phase dans le noir ou les photos, ou le flash permet de voir.
+
+Action du perso :
+	Se déplacer
+	Sauter
+	(S'accrocher au bords)
+	pousser
+	se baisser
+	(tirer)
+
+Souvenirs :
+	Tuto(Hub) enfance.
+	Mort de son chien ou de son pépé, dans un incendie. -> elements qui tombent du plafont, il faut les mettre en pause
+pour monter dessus, la pause arrete l'incendie.
+	deception amoureuse. -> phase runner.
+	Divorce des parents. Deux level differents avec deux fois le perso controler par les memes inputs.
+	
+	Souvenir heureu, sa femme ses gosses.
+
+	Perte du job et de tout ce qu'il a. -> On est monté dans la phase d'avant et là tous le décor disparait au fur 
+et a mesur et on doit dessendre sans mourir.
+	Il ne dit rien a sa femme, l'emene en vacances pour fuir. Sa femme et ses gosses meurent. ->runner en voiture, 
+ou on uttilise que le flash, a la fin on doit vachement l'uttiliser on voit plus rien et il y a l'accident
+	Zone de noir où l'on doit uttiliser le flash pour voir.
+	Il boit, et monte en haut d'un immeuble pour sauter, avec la lumiere des flics qui lui disent de ne pas sauter,
+il saute, retraverse tous les levels et meure.
+	
+	
+	
