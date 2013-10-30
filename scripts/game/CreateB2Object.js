@@ -7,7 +7,6 @@ define(["B2D"], function (Box2D){
     	fixDef.restitution = args.restitution || 0.2;
 
     	var bodyDef = new Box2D.BodyDef(); 
-    	console.log(args.dynamism);
     	bodyDef.type = args.dynamism || Box2D.Body.b2_dynamicBody; //dynamic or static
 	    bodyDef.position.x = args.x || 0;
 	    bodyDef.position.y = args.y || 0;
@@ -20,7 +19,7 @@ define(["B2D"], function (Box2D){
 	        fixDef.shape = new Box2D.PolygonShape;
 	        fixDef.shape.SetAsBox(w, h);
         }else{
-        	fixDef.shape = new Box2D.CircleShape(w);
+        	fixDef.shape = new Box2D.CircleShape(r);
         }
         var object = this.world.CreateBody(bodyDef).CreateFixture(fixDef);
         return object;
