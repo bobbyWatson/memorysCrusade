@@ -2,7 +2,7 @@ define([], function (){
 
 	var Canvas = function (){
 
-		this.SCALE = 10;
+		this.SCALE = 10.0;
 		this.DOM = document.createElement("canvas");
 		this.ctx = this.DOM.getContext("2d");
 		this.DOM.id = "canvas";
