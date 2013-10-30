@@ -4,7 +4,7 @@ define(["RAF"], function (RAF){
 		Game.canvas.ctx.fillStyle = "rgb(0,100,0)";
 		Game.canvas.ctx.fillRect(0,0,Game.canvas.DOM.width, Game.canvas.DOM.height);
 
-		
+
 		Game.world.Step(
 			1/60   //frame-rate
 			,	10 //velocity
@@ -16,11 +16,11 @@ define(["RAF"], function (RAF){
 
 
 
-     	// for(var i = 0; i < Game.gameObjects.length; i++){
-     		// if(Game.gameObjects[i].control){
-     			Game.gameObjects[2].control();
-     		// }
-     	// }
+     	for(var i = 0; i < Game.gameObjects.length; i++){
+     		if(Game.gameObjects[i].control){
+     			Game.gameObjects[i].control();
+     		}
+     	}
 
 
 		RAF(Run);
