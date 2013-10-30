@@ -2,6 +2,9 @@ define(["B2D"], function (Box2D){
 
 	var StaticPlateform = function StaticPlateform (args){
 
+		this.id = Game.ids;
+		Game.ids++;
+		
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.h = args.h || 0.5;
