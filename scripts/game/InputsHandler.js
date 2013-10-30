@@ -111,6 +111,10 @@ define([], function (){
 	window.addEventListener("keydown",function(e){inputsHandler.keyDown(e)});
 
 	window.addEventListener("keyup", function(e){inputsHandler.keyUp(e)});
+	
+	window.addEventListener("click", function(e){
+		Game.eventHandler.emit("click",e);
+	}
 
 	return InputsHandler.instance;
 })
