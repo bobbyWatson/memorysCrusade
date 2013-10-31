@@ -2,6 +2,8 @@ require.config({
 		urlArgs: "bust=" +  Date.now(),
 
 	 paths: {
+	 		"L"				: "libs/L",
+	 		"jump"			: "game/Jump",
 	 		"control"		: "game/Control",
 	 		"move"			: "game/Move",
 	 		"Player"		: "game/Player",
@@ -10,7 +12,7 @@ require.config({
 	 		"StaticPlateform": "game/StaticPlateform",
 	 		"createB2Object": "game/createB2Object",
 	 		"B2D"			: "game/Box2D",
-	 		"box2d"			: "libs/box2d.min",
+	 		"box2d"			: "libs/box2d",
 	 		"InputsHandler" : "game/InputsHandler",
 	 		"AddEvent"		: "game/AddEventHandler",
 	 		"Run"			: "game/Run",

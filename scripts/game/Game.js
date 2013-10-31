@@ -1,5 +1,5 @@
-define(["Canvas", "Run", "AddEvent", "InputsHandler", "B2D", "createB2Object", "StaticPlateform", "Init"], 
-	function ( Canvas, Run, addEventcapablity, InputsHandler, Box2D, createB2Object, StaticPlateform, Init){
+define(["Canvas", "Run", "AddEvent", "InputsHandler", "B2D", "createB2Object", "StaticPlateform", "Init", "L"], 
+	function ( Canvas, Run, addEventcapablity, InputsHandler, Box2D, createB2Object, StaticPlateform, Init, L){
 
 	var Game = function Game (){
 		this.ids = 0;
@@ -8,8 +8,9 @@ define(["Canvas", "Run", "AddEvent", "InputsHandler", "B2D", "createB2Object", "
 		this.eventHandler = Event;
 		this.InputsHandler = InputsHandler;
 		new Box2D();
+		new L();
 
-		this.world 	= new Box2D.World(new Box2D.Vec2(0, 10), true);
+		this.world 	= new Box2D.World(new Box2D.Vec2(0, 100), true);
 		//setup debug draw
 		var debugDraw = new Box2D.DebugDraw();	
 		debugDraw.SetSprite( this.canvas.ctx );

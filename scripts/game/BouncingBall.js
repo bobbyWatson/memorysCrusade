@@ -14,8 +14,9 @@ define(["B2D"], function (Box2D){
 			y	 		: this.y,
 			r 			: this.r,
 			dynamism	: Box2D.Body.b2_dynamicBody,
-			shape 		: "ball",
+			shape 		: "circle",
 			friction	: 0.2,
+			density		: 0.2,
 			restitution : 1
 		});
 	}

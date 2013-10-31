@@ -100,10 +100,12 @@ define([], function (){
 
 	InputsHandler.prototype.keyDown = function(e){
 		this.keys[e.keyCode] = true;
+		Game.emit("pressKey"+e.keyCode);
 	}
 
 	InputsHandler.prototype.keyUp = function(e){
 		this.keys[e.keyCode] = false;
+		Game.emit("releaseKey"+e.keyCode);
 	}
 	
 	var inputsHandler = new InputsHandler();
