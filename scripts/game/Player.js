@@ -1,4 +1,4 @@
-define(["B2D", "move", "control"],function (Box2D, move, control){
+define(["B2D", "move", "control","snapShoot"],function (Box2D, move, control,snapShoot){
 
 	var Player = function Player (args){
 
@@ -21,9 +21,13 @@ define(["B2D", "move", "control"],function (Box2D, move, control){
 			dynamism : Box2D.Body.b2_staticBody,
 			shape	 : "box"
 		});
+		
+		Game.on("click", this.snapShoot, this);
 	}
 
 	Player.prototype.move = move;
+	
+	Player.prototype.snapShoot = snapShoot;
 
 	Player.prototype.control = control;
 

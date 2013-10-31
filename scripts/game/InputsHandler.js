@@ -112,9 +112,10 @@ define([], function (){
 
 	window.addEventListener("keyup", function(e){inputsHandler.keyUp(e)});
 	
-	window.addEventListener("click", function(e){
-		Game.eventHandler.emit("click",e);
-	}
+	canvas.addEventListener("click", function(e){
+	console.log(e);
+		Game.emit("click",[e,{w:150,h:150}]);
+	});
 
 	return InputsHandler.instance;
 })

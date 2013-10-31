@@ -8,7 +8,6 @@ define(["B2D"], function (Box2D){
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.r = args.r || 2;
-
 		this.hitbox = Game.createB2Object({
 			x 			: this.x,
 			y	 		: this.y,

@@ -12,6 +12,8 @@ require.config({
 	 		"B2D"			: "game/Box2D",
 	 		"box2d"			: "libs/box2d.min",
 	 		"InputsHandler" : "game/InputsHandler",
+	 		"snapShoot" 	: "game/snapShoot",
+	 		"Photo" 		: "game/Photo",
 	 		"AddEvent"		: "game/AddEventHandler",
 	 		"Run"			: "game/Run",
 	 		"RAF"	    	: "libs/requestAnimFrame",
