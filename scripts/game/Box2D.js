@@ -13,6 +13,8 @@ define( function( require )
 		Box2D.PolygonShape = require("b2/PolygonShape");
 		Box2D.CircleShape = require("b2/CircleShape");
 		Box2D.RevoluteJointDef = require("b2/Joint");
+		Box2D.DistanceJointDef = require("b2/DistanceJoint");
+		Box2D.PrismaticJointDef = require("b2/PrismaticJoint");
 		Box2D.ContactListener  = box2D.Dynamics.b2ContactListener;
 		Box2D.instance = this;
 	};

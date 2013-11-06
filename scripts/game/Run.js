@@ -17,6 +17,7 @@ define(["RAF"], function (RAF){
 
 
      	for(var i = 0; i < Game.gameObjects.length; i++){
+     		Game.gameObjects[i].doWaitingActions();
      		if(Game.gameObjects[i].control){
      			Game.gameObjects[i].control();
      		}

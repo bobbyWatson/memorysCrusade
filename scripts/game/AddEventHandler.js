@@ -10,8 +10,9 @@ define([],function (){
 			listeners[e].push({callback : callback, instance : instance});
 		}
 		object.prototype.emit = function(e,arguments){
-			if(!listeners[e])
+			if(!listeners[e]){
 				return false;
+			}
 			for(var i = 0; i < listeners[e].length; i++){
 				listeners[e][i].callback.apply(listeners[e][i].instance, arguments);
 			}

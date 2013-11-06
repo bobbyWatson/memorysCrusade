@@ -1,15 +1,16 @@
-define(["B2D"], function (Box2D){
+define(["B2D", "doWaitingActions"], function (Box2D, doWaitingActions){
 
 	var BouncingBall = function BouncingBall (args){
 
 		this.id = Game.ids;
 		Game.ids++;
+		this.waitingActions = [];
 		
 		this.x = args.x || 0;
 		this.y = args.y || 0;
-		this.r = args.r || 2;
+		this.r = args.radius || 2;
 
-		this.hitbox = Game.createB2Object({
+		this.hitBox = Game.createB2Object({
 			x 			: this.x,
 			y	 		: this.y,
 			r 			: this.r,
@@ -19,6 +20,11 @@ define(["B2D"], function (Box2D){
 			density		: 0.2,
 			restitution : 1
 		});
+
+		this.hitBox.GetBody().SetUserData(this.id);
 	}
+
+	BouncingBall.prototype.doWaitingActions = doWaitingActions;
+	
 	return BouncingBall;
 })
