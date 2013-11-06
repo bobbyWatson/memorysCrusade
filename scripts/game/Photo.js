@@ -1,9 +1,10 @@
-define(["B2D"], function (Box2D){
+define(["B2D","doWaitingActions"], function (Box2D, doWaitingActions){
 
 	var Photo = function Photo (args){
 
 		this.id = Game.ids;
 		Game.ids++;
+		this.waitingActions = [];
 		
 		this.x = args.x || 0;
 		this.y = args.y || 0;
@@ -37,5 +38,7 @@ define(["B2D"], function (Box2D){
 			// }
 		// }
 	}
+
+	Photo.prototype.doWaitingActions = doWaitingActions;
 	return Photo;
 })

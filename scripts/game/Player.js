@@ -27,8 +27,6 @@ define(["B2D", "move", "control", "jump", "action", "doWaitingActions", "down", 
 			density  : 0.2,
 			shape	 : "box"
 		});
-<<<<<<< HEAD
-
 		this.hitBox.GetBody().SetFixedRotation(true);
 		this.hitBox.GetBody().SetLinearDamping(4.5);
 		this.hitBox.GetBody().SetUserData(this.id);
@@ -36,10 +34,8 @@ define(["B2D", "move", "control", "jump", "action", "doWaitingActions", "down", 
 		Game.on("pressKey"+this.jumpButton, jump, this);
 		Game.on("pressKey"+this.actionButton, action, this);
 		Game.on("pressKey"+ Game.InputsHandler.keyCode.down, down, this);
-		Game.on("pressKey"+ Game.InputsHandler.keyCode.up, up, this);
-=======
+		Game.on("pressKey"+ Game.InputsHandler.keyCode.up, up, this);		
 		Game.on("click", this.snapShoot, this);
->>>>>>> f7b12a01404e76f447a23502a7610c011f5d7348
 	}
 
 	Player.prototype.move = move;
