@@ -20,6 +20,8 @@ define(["RAF"], function (RAF){
      		if(Game.gameObjects[i].control){
      			Game.gameObjects[i].control();
      		}
+			if(Game.gameObjects[i].Log)
+				Game.gameObjects[i].Log();
      	}
 
 

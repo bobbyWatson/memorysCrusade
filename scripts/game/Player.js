@@ -21,7 +21,6 @@ define(["B2D", "move", "control","snapShoot"],function (Box2D, move, control,sna
 			dynamism : Box2D.Body.b2_staticBody,
 			shape	 : "box"
 		});
-		
 		Game.on("click", this.snapShoot, this);
 	}
 
