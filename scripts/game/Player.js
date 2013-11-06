@@ -1,5 +1,5 @@
-define(["B2D", "move", "control", "jump", "action", "doWaitingActions", "down", "up"],
-	function (Box2D, move, control, jump, action, doWaitingActions, down, up){
+define(["B2D", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot"],
+	function (Box2D, move, control, jump, action, doWaitingActions, down, up, snapShoot){
 
 	var Player = function Player (args){
 		var x = args.x || 15;
@@ -27,6 +27,7 @@ define(["B2D", "move", "control", "jump", "action", "doWaitingActions", "down", 
 			density  : 0.2,
 			shape	 : "box"
 		});
+<<<<<<< HEAD
 
 		this.hitBox.GetBody().SetFixedRotation(true);
 		this.hitBox.GetBody().SetLinearDamping(4.5);
@@ -36,9 +37,14 @@ define(["B2D", "move", "control", "jump", "action", "doWaitingActions", "down", 
 		Game.on("pressKey"+this.actionButton, action, this);
 		Game.on("pressKey"+ Game.InputsHandler.keyCode.down, down, this);
 		Game.on("pressKey"+ Game.InputsHandler.keyCode.up, up, this);
+=======
+		Game.on("click", this.snapShoot, this);
+>>>>>>> f7b12a01404e76f447a23502a7610c011f5d7348
 	}
 
 	Player.prototype.move = move;
+	
+	Player.prototype.snapShoot = snapShoot;
 
 	Player.prototype.control = control;
 	

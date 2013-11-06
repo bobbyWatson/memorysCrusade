@@ -28,6 +28,8 @@ require.config({
 	 		"Run"					: "game/Run",
 	 		"RAF"	    			: "libs/requestAnimFrame",
 			"Game"      			: "game/Game",
+	 		"snapShoot" 			: "game/snapShoot",
+	 		"Photo" 				: "game/Photo",
 			"Canvas"    			: "game/Canvas"
 		}
 

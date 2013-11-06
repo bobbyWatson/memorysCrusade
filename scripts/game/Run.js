@@ -1,8 +1,8 @@
 define(["RAF"], function (RAF){
 
 	return function Run (){
-		Game.canvas.ctx.fillStyle = "rgb(0,100,0)";
-		Game.canvas.ctx.fillRect(0,0,Game.canvas.DOM.width, Game.canvas.DOM.height);
+		// Game.canvas.ctx.fillStyle = "rgb(0,100,0)";
+		// Game.canvas.ctx.fillRect(0,0,Game.canvas.DOM.width, Game.canvas.DOM.height);
 
 
 		Game.world.Step(
@@ -21,6 +21,8 @@ define(["RAF"], function (RAF){
      		if(Game.gameObjects[i].control){
      			Game.gameObjects[i].control();
      		}
+			if(Game.gameObjects[i].Log)
+				Game.gameObjects[i].Log();
      	}
 
 

@@ -113,6 +113,11 @@ define([], function (){
 	window.addEventListener("keydown",function(e){inputsHandler.keyDown(e)});
 
 	window.addEventListener("keyup", function(e){inputsHandler.keyUp(e)});
+	
+	canvas.addEventListener("click", function(e){
+	console.log(e);
+		Game.emit("click",[e,{w:150,h:150}]);
+	});
 
 	return InputsHandler.instance;
 })
