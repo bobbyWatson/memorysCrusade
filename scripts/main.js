@@ -1,4 +1,3 @@
-require(["Game", "StaticPlateform"], function (Game, StaticPlateform){
+require(["Game", "Init"], function (Game, Init){
 	window.Game = Game;
-	Game.init();
 })
