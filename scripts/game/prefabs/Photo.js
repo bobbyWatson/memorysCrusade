@@ -27,6 +27,14 @@ define(["B2D","doWaitingActions"], function (Box2D, doWaitingActions){
 		if(this.hitbox.GetBody().GetContactList())
 			this.hitbox.GetBody().GetContactList().other.m_type=0;
 	}
+	Photo.prototype.undo=function(){
+	var _this=this;
+	window.setTimeou(function(){
+			_this.hitbox.GetBody().GetContactList().other.m_type=2;
+			Game.world.DestroyBody(Game.gameObjects[_this.id].hitbox.GetBody())
+			Game.gameObjects.splice(_this.id,1);
+		},2000);
+	}
 
 	Photo.prototype.doWaitingActions = doWaitingActions;
 	return Photo;
