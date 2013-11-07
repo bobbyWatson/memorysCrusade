@@ -29,10 +29,14 @@ define(["B2D","doWaitingActions"], function (Box2D, doWaitingActions){
 	}
 	Photo.prototype.undo=function(){
 	var _this=this;
-	window.setTimeou(function(){
-			_this.hitbox.GetBody().GetContactList().other.m_type=2;
-			Game.world.DestroyBody(Game.gameObjects[_this.id].hitbox.GetBody())
-			Game.gameObjects.splice(_this.id,1);
+	window.setTimeout(function(){
+			for (var i=0;i<Game.gameObjects.length;i++){
+				if(Game.gameObjects[i].id==_this.id;){
+					_this.hitbox.GetBody().GetContactList().other.m_type=2;
+					Game.world.DestroyBody(Game.gameObjects[i].hitbox.GetBody())
+					Game.gameObjects.splice(i,1);
+				}
+			}
 		},2000);
 	}
 
