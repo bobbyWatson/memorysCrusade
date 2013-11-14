@@ -1,5 +1,5 @@
-define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot"],
-	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, snapShoot){
+define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw"],
+	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, snapShoot, draw){
 
 	var Player = function Player (args){
 		var x = args.x || 15;
@@ -10,6 +10,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 
 		this.id = Game.ids;
 		Game.ids++;
+		this.tag = "Player";
 		this.speedX = 2;
 		this.speedY = 1;
 		this.jumpForce = 50;
@@ -21,8 +22,8 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.hitBox = Game.createB2Object({
 			x 		 : x,
 			y 		 : y,
-			w		 : this.w,
-			h		 : this.h,
+			width	 : this.width,
+			height	 : this.height,
 			dynamism : Box2D.Body.b2_dynamicBody,
 			friction : 0,
 			density  : 0.2,
@@ -42,7 +43,10 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 	Player.prototype.actions = function (){
 		this.doWaitingActions();
 		this.control();
+		this.draw();
 	}
+
+	Player.prototype.draw = draw;
 
 	Player.prototype.move = move;
 	

@@ -1,4 +1,4 @@
-define(["Game","RAF"], function (Game, RAF){
+define(["Game","RAF", "Camera", "Canvas"], function (Game, RAF, Camera, Canvas){
 
 	var Run =  function Run (){
 		Run.instance = this;
@@ -10,12 +10,17 @@ define(["Game","RAF"], function (Game, RAF){
 			,	10 //velocity
 			,	10 //position iterations
 		);
+
+		Canvas.ctx.fillStyle = 'rgb(0,0,0)';
+		Canvas.ctx.fillRect(0,0,Canvas.DOM.width, Canvas.DOM.height);
+
     	Game.world.DrawDebugData();
 
      	Game.world.ClearForces(); 
+     	Camera.actions();
      	for(var i = 0; i < Game.gameObjects.length; i++){
      		Game.gameObjects[i].actions();
-     	} 
+     	}
 		RAF(Run.instance.run);
 	}
 

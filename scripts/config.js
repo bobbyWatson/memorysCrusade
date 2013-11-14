@@ -30,6 +30,9 @@ require.config({
 	 		"move"					: "game/functions/Move",
 	 		"AddEvent"				: "game/functions/AddEventHandler",
 	 		"snapShoot" 			: "game/functions/snapShoot",
+	 		"followPlayer"			: "game/functions/Rendering/FollowPlayer",
+	 		"draw"					: "game/functions/Rendering/Draw",
+	 		"Camera" 				: "game/Instances/Camera",
 	 		"InputsHandler" 		: "game/controlers/InputsHandler"
 		}
 
