@@ -10,8 +10,6 @@ define(["Canvas", "AddEvent", "B2D", "createB2Object", "emitContactEvent", "emit
 		this.world 	= new Box2D.World(new Box2D.Vec2(0, 100), true);
 		this.listener = new Box2D.ContactListener;
 		this.world.SetContactListener( this.listener );
-		this.listener.BeginContact = this.emitContactEvent;
-		this.listener.EndContact = this.emitEndContactEvent;
 		//setup debug draw
 		var debugDraw = new Box2D.DebugDraw();	
 		debugDraw.SetSprite( Canvas.ctx );
@@ -32,5 +30,9 @@ define(["Canvas", "AddEvent", "B2D", "createB2Object", "emitContactEvent", "emit
 	Game.prototype.emitEndContactEvent = emitEndContactEvent;
 
 	new Game();
+
+	Game.instance.listener.BeginContact = function (contact){Game.instance.emitContactEvent(contact)};
+	
+	Game.instance.listener.EndContact = function (contact){Game.instance.emitEndContactEvent(contact)};
 	return Game.instance ;
 });

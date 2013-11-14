@@ -1,10 +1,11 @@
-define(["Game", "B2D", "doWaitingActions"], function (Game, Box2D, doWaitingActions){
+define(["Game", "B2D", "doWaitingActions", "draw"], function (Game, Box2D, doWaitingActions, draw){
 
 	var StaticPlateform = function StaticPlateform (args){
 		this.id = Game.ids;
 		Game.ids++;
 		this.waitingActions = [];
 		
+		this.color = "red";
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.height = args.height || 0.5;
@@ -24,9 +25,12 @@ define(["Game", "B2D", "doWaitingActions"], function (Game, Box2D, doWaitingActi
 	}
 
 	StaticPlateform.prototype.doWaitingActions = doWaitingActions
+	
+	StaticPlateform.prototype.draw = draw
 
 	StaticPlateform.prototype.actions = function (){
 		this.doWaitingActions();
+		this.draw();
 	}
 
 	return StaticPlateform;
