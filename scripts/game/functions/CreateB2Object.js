@@ -2,9 +2,9 @@ define(["B2D"], function (Box2D){
 	
 	return function createB2Object (args){ // x , y , w , h , r , density , friction , restitution , type , shape
 		var fixDef = new Box2D.FixtureDef();
-    	fixDef.density = args.density || 1.0;
-    	fixDef.friction = args.friction || 0.5;
-    	fixDef.restitution = args.restitution || 0.2;
+    	fixDef.density = 1.0;
+    	fixDef.friction = 0.5;
+    	fixDef.restitution = 0.2;
 
     	var bodyDef = new Box2D.BodyDef(); 
     	bodyDef.type = args.dynamism || Box2D.Body.b2_dynamicBody; //dynamic or static

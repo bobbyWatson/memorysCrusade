@@ -7,7 +7,7 @@ define(["Canvas", "AddEvent", "B2D", "createB2Object", "emitContactEvent", "emit
 		new Box2D();
 		// this.contactListener = new Box2D.ContactListener();
 
-		this.world 	= new Box2D.World(new Box2D.Vec2(0, 100), true);
+		this.world 	= new Box2D.World(new Box2D.Vec2(0, 150), true);
 		this.listener = new Box2D.ContactListener;
 		this.world.SetContactListener( this.listener );
 		//setup debug draw

@@ -19,7 +19,6 @@ define(["Game", "B2D", "doWaitingActions", "draw"], function (Game, Box2D, doWai
 			dynamism: Box2D.Body.b2_kinematicBody,
 			shape 	: "box"
 		});
-
 		this.hitBox.GetBody().SetUserData(this.id);
 
 	}

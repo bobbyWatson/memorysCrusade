@@ -1,5 +1,5 @@
 require.config({
-		urlArgs: "bust=" +  Date.now(),
+		//urlArgs: "bust=" +  Date.now(),
 
 	 paths: {
 	 		"L"						: "libs/L",
@@ -16,6 +16,7 @@ require.config({
 	 		"Player"				: "game/prefabs/Player",
 	 		"Photo" 				: "game/prefabs/Photo",
 	 		"StaticPlateform"		: "game/prefabs/StaticPlateform",
+	 		"WorldGround"			: "game/prefabs/WorldGround",
 	 		"isPlayerInside"		: "game/functions/IsPlayerInside",
 	 		"isPlayerOut"			: "game/functions/IsPlayerOut",
 	 		"emitContactEvent"		: "game/functions/EmitContactEvent",
@@ -30,9 +31,11 @@ require.config({
 	 		"move"					: "game/functions/Move",
 	 		"AddEvent"				: "game/functions/AddEventHandler",
 	 		"snapShoot" 			: "game/functions/snapShoot",
+	 		"createLevel" 			: "game/functions/createLevel",
 	 		"followPlayer"			: "game/functions/Rendering/FollowPlayer",
 	 		"draw"					: "game/functions/Rendering/Draw",
 	 		"Camera" 				: "game/Instances/Camera",
+	 		"LevelController"		: "game/Instances/LevelController",
 	 		"InputsHandler" 		: "game/controlers/InputsHandler"
 		}
 

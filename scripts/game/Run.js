@@ -15,8 +15,8 @@ define(["Game","RAF", "Camera", "Canvas"], function (Game, RAF, Camera, Canvas){
 		Canvas.ctx.fillRect(0,0,Canvas.DOM.width, Canvas.DOM.height);
 
     	Game.world.DrawDebugData();
-
      	Game.world.ClearForces(); 
+
      	Camera.actions();
      	for(var i = 0; i < Game.gameObjects.length; i++){
      		Game.gameObjects[i].actions();

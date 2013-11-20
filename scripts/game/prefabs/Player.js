@@ -11,9 +11,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.id = Game.ids;
 		Game.ids++;
 		this.tag = "Player";
-		this.speedX = 2;
-		this.speedY = 1;
-		this.jumpForce = 50;
+		this.speedX = 10;
+		this.speedY = 3;
+		this.jumpForce = 200;
 		this.canJump = true;
 		this.hasGravity = true;
 		this.actionButton = InputsHandler.keyCode.ctrl;
@@ -22,12 +22,11 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.hitBox = Game.createB2Object({
 			x 		 : x,
 			y 		 : y,
-			width	 : this.width,
-			height	 : this.height,
+			radius	 : this.width,
 			dynamism : Box2D.Body.b2_dynamicBody,
 			friction : 0,
 			density  : 0.2,
-			shape	 : "box"
+			shape	 : "circle"
 		});
 		this.hitBox.GetBody().SetFixedRotation(true);
 		this.hitBox.GetBody().SetLinearDamping(4.5);
