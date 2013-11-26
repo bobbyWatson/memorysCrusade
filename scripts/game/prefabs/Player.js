@@ -1,5 +1,6 @@
-define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw"],
-	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, snapShoot, draw){
+define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom"],
+	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom){
+
 
 	var Player = function Player (args){
 		var x = args.x || 15;
@@ -10,15 +11,17 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 
 		this.id = Game.ids;
 		Game.ids++;
+		this.zoom=1.5;
 		this.tag = "Player";
-		this.speedX = 10;
-		this.speedY = 3;
-		this.jumpForce = 200;
+		this.speedX = 2;
+		this.speedY = 1;
+		this.jumpForce = 75;
 		this.canJump = true;
+		this.photoTaken = false;
 		this.hasGravity = true;
 		this.actionButton = InputsHandler.keyCode.ctrl;
 		this.jumpButton = InputsHandler.keyCode.space;
-
+		this.spawn={x:x,y:y};
 		this.hitBox = Game.createB2Object({
 			x 		 : x,
 			y 		 : y,
@@ -28,15 +31,16 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			density  : 0.2,
 			shape	 : "circle"
 		});
-		this.hitBox.GetBody().SetFixedRotation(true);
+		//this.hitBox.GetBody().SetFixedRotation(true);
 		this.hitBox.GetBody().SetLinearDamping(4.5);
 		this.hitBox.GetBody().SetUserData(this);
 
 		Game.on("pressKey"+this.jumpButton, jump, this);
 		Game.on("pressKey"+this.actionButton, action, this);
-		Game.on("pressKey"+ InputsHandler.keyCode.down, down, this);
-		Game.on("pressKey"+ InputsHandler.keyCode.up, up, this);		
-		Game.on("click", this.snapShoot, this);
+		Game.on("pressKey"+ InputsHandler.keyCode.s, down, this);
+		Game.on("pressKey"+ InputsHandler.keyCode.z, up, this);		
+		Game.on("click", this.SnapShoot, this);
+		Game.on("mousewheel",this.Zoom, this);
 	}
 
 	Player.prototype.actions = function (){
@@ -44,12 +48,17 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.control();
 		this.draw();
 	}
+	Player.prototype.death = death;
+
+	Player.prototype.draw = draw;
 
 	Player.prototype.draw = draw;
 
 	Player.prototype.move = move;
 	
-	Player.prototype.snapShoot = snapShoot;
+	Player.prototype.Zoom = Zoom;
+	
+	Player.prototype.SnapShoot = SnapShoot;
 
 	Player.prototype.control = control;
 	

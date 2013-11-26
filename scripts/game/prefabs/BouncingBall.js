@@ -13,7 +13,7 @@ define(["Game", "B2D", "doWaitingActions"], function (Game, Box2D, doWaitingActi
 		this.hitBox = Game.createB2Object({
 			x 			: this.x,
 			y	 		: this.y,
-			radius 			: this.radius,
+			radius 		: this.radius,
 			dynamism	: Box2D.Body.b2_dynamicBody,
 			shape 		: "circle",
 			friction	: 0.2,
@@ -21,7 +21,7 @@ define(["Game", "B2D", "doWaitingActions"], function (Game, Box2D, doWaitingActi
 			restitution : 1
 		});
 
-		this.hitBox.GetBody().SetUserData(this.id);
+		this.hitBox.GetBody().SetUserData(this);
 	}
 
 	BouncingBall.prototype.doWaitingActions = doWaitingActions;

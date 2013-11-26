@@ -7,7 +7,7 @@ define(["createLevel"], function (createLevel){
 		this.ctx = this.canvas.getContext("2d");
 		this.levels = {
 			level1 :function(){var Img = new Image();
-					Img.src = "./assets/img/level1.png";
+					Img.src = "./assets/img/level.png";
 					Img.onload = function(){LevelController.instance.createLevel("level1")};
 					return Img;
 			}()

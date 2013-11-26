@@ -20,7 +20,7 @@ define(["Game","B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions"], func
 			shape	 : "box"
 		});
 
-		this.actionBox.GetBody().SetUserData(this.id);
+		this.actionBox.GetBody().SetUserData(this);
 
 		this.actionBox.SetSensor(true);
 

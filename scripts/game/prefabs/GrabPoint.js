@@ -21,7 +21,7 @@ define(["Game", "B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions"], fun
 			shape	 : "box"
 		});
 
-		this.actionBox.GetBody().SetUserData(this.id);
+		this.actionBox.GetBody().SetUserData(this);
 
 		this.actionBox.SetSensor(true);
 
