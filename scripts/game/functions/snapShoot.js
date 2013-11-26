@@ -1,4 +1,4 @@
-define(["Photo", "Canvas","Cube","Player"],function (Photo, Canvas, Cube,Player){
+define(["Photo", "Canvas","Cube"],function (Photo, Canvas, Cube){
 	return function SnapShoot (e){
 		// var photo=new Photo({x : e.offsetX/Canvas.SCALE, y : e.offsetY/Canvas.SCALE, width : 5, height : 5});
 		// if(!this.photoTaken)

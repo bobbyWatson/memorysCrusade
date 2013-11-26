@@ -10,7 +10,8 @@ define(["Game", "Ladder", "B2D"], function (Game, Ladder, Box2D){
 		if(actionObject){
 			if(Ladder.prototype.isPrototypeOf(actionObject)){
 				if(this.hasGravity){		
-					this.hasGravity = false;			
+					this.hasGravity = false;
+					this.hitBox.GetBody().SetLinearVelocity(new Box2D.Vec2(0,0));
 				}
 			}
 		}
