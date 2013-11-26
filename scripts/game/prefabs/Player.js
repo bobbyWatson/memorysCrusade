@@ -13,9 +13,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		Game.ids++;
 		this.zoom=1.5;
 		this.tag = "Player";
-		this.speedX = 6;
-		this.speedY = 3;
-		this.jumpForce = 300;
+		this.speedX = 2;
+		this.speedY = 1;
+		this.jumpForce = 75;
 		this.canJump = true;
 		this.photoTaken = false;
 		this.hasGravity = true;
@@ -37,8 +37,8 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 
 		Game.on("pressKey"+this.jumpButton, jump, this);
 		Game.on("pressKey"+this.actionButton, action, this);
-		Game.on("pressKey"+ InputsHandler.keyCode.down, down, this);
-		Game.on("pressKey"+ InputsHandler.keyCode.up, up, this);		
+		Game.on("pressKey"+ InputsHandler.keyCode.s, down, this);
+		Game.on("pressKey"+ InputsHandler.keyCode.z, up, this);		
 		Game.on("click", this.SnapShoot, this);
 		Game.on("mousewheel",this.Zoom, this);
 	}
