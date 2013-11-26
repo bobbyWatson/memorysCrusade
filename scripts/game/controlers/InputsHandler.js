@@ -113,7 +113,7 @@ define(["Game"], function (Game){
 	window.addEventListener("keydown",function(e){inputsHandler.keyDown(e)});
 
 	window.addEventListener("keyup", function(e){inputsHandler.keyUp(e)});
-	
+	window.addEventListener("mousewheel",function(e){Game.emit("mousewheel",[e])});
 	canvas.addEventListener("click", function(e){
 		Game.emit("click",[e,{w:150,h:150}]);
 	});
