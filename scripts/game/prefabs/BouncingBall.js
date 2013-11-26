@@ -21,7 +21,7 @@ define(["Game", "B2D", "doWaitingActions"], function (Game, Box2D, doWaitingActi
 			restitution : 1
 		});
 
-		this.hitBox.GetBody().SetUserData(this.id);
+		this.hitBox.GetBody().SetUserData(this);
 	}
 
 	BouncingBall.prototype.doWaitingActions = doWaitingActions;

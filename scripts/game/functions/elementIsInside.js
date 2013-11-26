@@ -1,15 +1,17 @@
 define(["Game", "Player"], function (Game, Player){
 
 	return function elementIsInside( args ){
-		var Player = require("Player");
-		if(Player.prototype.isPrototypeOf(args.m_fixtureA.GetBody().GetUserData()) ||
-			Player.prototype.isPrototypeOf(args.m_fixtureB.GetBody().GetUserData())){
-			console.log(args.m_fixtureB.GetBody().GetUserData(),args.m_fixtureA.GetBody().GetUserData());
-			this.playerInside = true;
+
+		var otherCollider;
+		if(args.m_fixtureA.GetBody().GetUserData().id === this.id){
+			otherCollider = args.m_fixtureB;
+		} else{
+			otherCollider = args.m_fixtureA;
 		}
-		else 
-		{
-			Game.gameObjects[args.m_fixtureB.GetBody().GetUserData()].hitbox.GetBody().m_type=0;
+
+		if(otherCollider.GetBody().GetUserData().tag !== "Player"){
+			otherCollider.GetBody().GetUserData().hitBox.GetBody().m_type=0;
+			this.objects.push(otherCollider.GetBody().GetUserData());
 		}
 	}
 })

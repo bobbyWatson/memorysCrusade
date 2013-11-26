@@ -15,7 +15,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.tag = "Player";
 		this.speedX = 6;
 		this.speedY = 3;
-		this.jumpForce = 200;
+		this.jumpForce = 300;
 		this.canJump = true;
 		this.photoTaken = false;
 		this.hasGravity = true;

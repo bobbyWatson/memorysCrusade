@@ -1,7 +1,6 @@
 define(["B2D", "Game", "Canvas", "WorldGround"],function (Box2D, Game, Canvas, WorldGround){
 
 	return function createLevel (levelName){
-		console.log(this.levels[levelName])
 		this.canvas.width = this.levels[levelName].width;
 		this.canvas.height = this.levels[levelName].height;
 		this.ctx.drawImage(this.levels[levelName], 0, 0);

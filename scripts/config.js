@@ -27,7 +27,6 @@ require.config({
 	 		"doWaitingActions"		: "game/functions/DoWaitingActions",
 	 		"checkPoint"			: "game/functions/checkPoint",
 	 		"elementIsInside"		: "game/functions/elementIsInside",
-	 		"isElementOut"			: "game/functions/isElementOut",
 	 		"Zoom"					: "game/functions/Zoom",
 	 		"action"				: "game/functions/Action",
 	 		"down"					: "game/functions/Down",

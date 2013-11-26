@@ -1,4 +1,4 @@
-define(["B2D","doWaitingActions","Game","elementIsInside","isElementOut"], function (Box2D, doWaitingActions,Game,elementIsInside,isElementOut){
+define(["B2D","doWaitingActions","Game","elementIsInside"], function (Box2D, doWaitingActions,Game,elementIsInside){
 
 	var Photo = function Photo (args){
 
@@ -6,6 +6,8 @@ define(["B2D","doWaitingActions","Game","elementIsInside","isElementOut"], funct
 		Game.ids++;
 		this.waitingActions = [];
 		
+		this.timeToStay = 2.0;
+		this.objects = [];
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.height = args.height || 0;
@@ -19,7 +21,7 @@ define(["B2D","doWaitingActions","Game","elementIsInside","isElementOut"], funct
 			shape 	: "box"
 		});
 		this.hitbox.SetSensor(true)
-		this.hitbox.GetBody().SetUserData(this.id);
+		this.hitbox.GetBody().SetUserData(this);
 		
 		// this.hitbox.GetBody().GetContactList();
 		Game.on("gameObject"+this.id+"Collides", this.elementIsInside, this);
@@ -29,26 +31,32 @@ define(["B2D","doWaitingActions","Game","elementIsInside","isElementOut"], funct
 
 	Photo.prototype.actions = function (){
 		
-		this.undo();
+		this.minusTime()
 	}
+
 	Photo.prototype.undo=function(){
-	var _this=this;
-	window.setTimeout(function(){
-		Game.on("gameObject"+_this.id+"EndCollides", _this.isElementOut, _this);
-			for (var i=0;i<Game.gameObjects.length;i++){
-				if(Game.gameObjects[i].id==_this.id){
-					Game.world.DestroyBody(Game.gameObjects[i].hitbox.GetBody())
-					Game.gameObjects.splice(i,1);
-				}
+		for(var i = 0; i < this.objects.length; i++){
+			this.objects[i].hitBox.GetBody().m_type=2;
+		}
+		for (var i=0;i<Game.gameObjects.length;i++){
+			if(Game.gameObjects[i].id == this.id){
+				Game.world.DestroyBody(Game.gameObjects[i].hitbox.GetBody())
+				Game.gameObjects.splice(i,1);
 			}
-		},2000);
+		}
 	}
 	
 	Photo.prototype.elementIsInside = elementIsInside;
 	
-	Photo.prototype.isElementOut = isElementOut;
-
 	Photo.prototype.doWaitingActions = doWaitingActions;
+
+	Photo.prototype.minusTime = function (){
+
+		this.timeToStay -= 1/60;
+		if(this.timeToStay <= 0){
+			this.undo();
+		}
+	}
 	
 	return Photo;
 })

@@ -7,7 +7,7 @@ define(["Game", "Player"], function (Game, Player){
 		} else if(Player.prototype.isPrototypeOf(args.m_fixtureB.GetBody().GetUserData())){
 			var player = args.m_fixtureB.GetBody().GetUserData();
 		} else{
-			Game.gameObjects[args.m_fixtureB.GetBody().GetUserData()].hitbox.GetBody().m_type=2;
+			args.m_fixtureB.GetBody().GetUserData().hitBox.GetBody().m_type=2;
 		}
 		// player.hasGravity = true;
 		this.playerInside = false;
