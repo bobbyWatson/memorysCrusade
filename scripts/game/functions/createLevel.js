@@ -1,7 +1,7 @@
 define(["B2D", "Game", "Canvas", "WorldGround"],function (Box2D, Game, Canvas, WorldGround){
 
 	return function createLevel (levelName){
-
+		console.log(this.levels[levelName])
 		this.canvas.width = this.levels[levelName].width;
 		this.canvas.height = this.levels[levelName].height;
 		this.ctx.drawImage(this.levels[levelName], 0, 0);
@@ -121,7 +121,6 @@ define(["B2D", "Game", "Canvas", "WorldGround"],function (Box2D, Game, Canvas, W
 				}
 			}
 		}
-		console.log(existingGround);
 		//create Box2D Objects
 		var fixDef = new Box2D.FixtureDef();
 	    fixDef.density =  1.0;
