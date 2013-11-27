@@ -1,4 +1,4 @@
-define(["Game","RAF", "Camera", "Canvas"], function (Game, RAF, Camera, Canvas){
+define(["Game","RAF", "Camera", "Canvas","stats"], function (Game, RAF, Camera, Canvas,stats){
 
 	var Run =  function Run (){
 		Run.instance = this;
@@ -10,7 +10,7 @@ define(["Game","RAF", "Camera", "Canvas"], function (Game, RAF, Camera, Canvas){
 			,	10 //velocity
 			,	10 //position iterations
 		);
-
+		stats.begin();
 		Canvas.ctx.fillStyle = 'rgb(0,0,0)';
 		Canvas.ctx.fillRect(0,0,Canvas.DOM.width, Canvas.DOM.height);
 
@@ -21,6 +21,7 @@ define(["Game","RAF", "Camera", "Canvas"], function (Game, RAF, Camera, Canvas){
      	for(var i = 0; i < Game.gameObjects.length; i++){
      		Game.gameObjects[i].actions();
      	}
+		stats.end();
 		RAF(Run.instance.run);
 	}
 

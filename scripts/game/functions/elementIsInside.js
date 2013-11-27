@@ -1,4 +1,4 @@
-define(["Game", "Player"], function (Game, Player){
+define(["Game", "Player","B2D"], function (Game, Player,Box2D){
 
 	return function elementIsInside( args ){
 
@@ -10,12 +10,14 @@ define(["Game", "Player"], function (Game, Player){
 		}
 
 		if(otherCollider.GetBody().GetUserData().tag !== "Player"){
+			 console.log(Box2D.Body.b2_kinematicBody);
 			var velocity = {};
 			velocity.x = otherCollider.GetBody().GetLinearVelocity().x;
 			velocity.y = otherCollider.GetBody().GetLinearVelocity().y;
 			var rotation = otherCollider.GetBody().GetAngularVelocity();
 			this.objects.push([otherCollider.GetBody().GetUserData(), velocity, rotation]);
-			otherCollider.GetBody().GetUserData().hitBox.GetBody().m_type=1;
+			// otherCollider.GetBody().GetUserData().hitBox.GetBody().m_type=1;
+			otherCollider.GetBody().SetType(1);
 			otherCollider.GetBody().SetLinearVelocity({x:0,y:0});
 			otherCollider.GetBody().SetAngularVelocity(0);
 		}
