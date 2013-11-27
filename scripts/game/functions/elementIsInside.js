@@ -15,7 +15,8 @@ define(["Game", "Player","B2D"], function (Game, Player,Box2D){
 			velocity.x = otherCollider.GetBody().GetLinearVelocity().x;
 			velocity.y = otherCollider.GetBody().GetLinearVelocity().y;
 			var rotation = otherCollider.GetBody().GetAngularVelocity();
-			this.objects.push([otherCollider.GetBody().GetUserData(), velocity, rotation]);
+			var type=otherCollider.GetBody().GetType();
+			this.objects.push([otherCollider.GetBody().GetUserData(), velocity, rotation, type]);
 			// otherCollider.GetBody().GetUserData().hitBox.GetBody().m_type=1;
 			otherCollider.GetBody().SetType(0);
 			otherCollider.GetBody().SetLinearVelocity({x:0,y:0});

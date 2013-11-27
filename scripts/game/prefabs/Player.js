@@ -68,7 +68,5 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 	
 	Player.prototype.doWaitingActions = doWaitingActions;
 
-	Player.prototype.doWaitingActions = doWaitingActions;
-
 	return Player;
 })
