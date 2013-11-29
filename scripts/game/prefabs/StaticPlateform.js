@@ -1,11 +1,10 @@
-define(["Game", "B2D", "doWaitingActions", "draw"], function (Game, Box2D, doWaitingActions, draw){
+define(["Game", "B2D", "doWaitingActions", "draw", "ShapeSprite"], function (Game, Box2D, doWaitingActions, draw, ShapeSprite){
 
 	var StaticPlateform = function StaticPlateform (args){
 		this.id = Game.ids;
 		Game.ids++;
 		this.waitingActions = [];
 		
-		this.color = "red";
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.height = args.height || 0.5;
@@ -21,6 +20,7 @@ define(["Game", "B2D", "doWaitingActions", "draw"], function (Game, Box2D, doWai
 		});
 		this.hitBox.GetBody().SetUserData(this);
 
+		this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", shape : "box", height : this.height, width : this.width});
 	}
 
 	StaticPlateform.prototype.doWaitingActions = doWaitingActions
@@ -31,6 +31,7 @@ define(["Game", "B2D", "doWaitingActions", "draw"], function (Game, Box2D, doWai
 		this.doWaitingActions();
 		this.draw();
 	}
+
 
 	return StaticPlateform;
 })

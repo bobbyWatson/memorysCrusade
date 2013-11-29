@@ -45,7 +45,11 @@ require.config({
 	 		"followPlayer"			: "game/functions/Rendering/FollowPlayer",
 	 		"draw"					: "game/functions/Rendering/Draw",
 	 		"Camera" 				: "game/Instances/Camera",
-	 		"InputsHandler" 		: "game/controlers/InputsHandler"
+	 		"InputsHandler" 		: "game/controlers/InputsHandler",
+	 		"ImageSprite" 			: "game/Components/ImageSprite",
+	 		"ShapeSprite" 			: "game/Components/ShapeSprite",
+	 		"SpriteSheet" 			: "game/Components/SpriteSheet",
+	 		"Animation" 			: "game/Components/Animation"
 		}
 
 	, shim: {
