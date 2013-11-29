@@ -1,4 +1,4 @@
-define(["Game", "B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions"], function (Game, Box2D, isPlayerInside, isPlayerOut, doWaitingActions){
+define(["Game", "B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions", "MaskControler"], function (Game, Box2D, isPlayerInside, isPlayerOut, doWaitingActions, MaskControler){
 
 	var GrabPoint = function GrabPoint (args){
 
@@ -11,14 +11,15 @@ define(["Game", "B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions"], fun
 		var y = args.y || 0;
 		this.width = 2;
 		this.height = 2;
-
+		this.layer = MaskControler.ActionPlateform;
 		this.actionBox = Game.createB2Object({
 			x 		 : x,
 			y 		 : y,
 			width	 : this.width,
 			height	 : this.height,
 			dynamism : Box2D.Body.b2_kinematicBody,
-			shape	 : "box"
+			shape	 : "box",
+			layer	 : this.layer
 		});
 
 		this.actionBox.GetBody().SetUserData(this);

@@ -1,4 +1,4 @@
-define(["Game","B2D", "doWaitingActions", "move", "checkDirection"], function (Game, Box2D, doWaitingActions, move, checkDirection){
+define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler"], function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler){
 
 	var MovingPlateform = function MovingPlateform (args){
 		this.id = Game.ids;
@@ -14,14 +14,15 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection"], function (G
 		this.marge = this.y+this.distance;
 		this.width = args.width || 5;
 		this.height = args.height || 1;
-
+		this.layer = MaskControler.Plateform;
 		this.hitBox = Game.createB2Object({
 			x 		 : this.x,
 			y 		 : this.y,
 			width 	 : this.width,
 			height	 : this.height,
 			dynamism : Box2D.Body.b2_kinematicBody,
-			shape	 : "box"
+			shape	 : "box",
+			layer    : this.layer
 		});
 
 		this.hitBox.GetBody().SetUserData(this);

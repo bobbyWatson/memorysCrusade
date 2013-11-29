@@ -18,13 +18,13 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move"], function (Bo
 			y 		: this.y,
 			height	: this.height,
 			width 	: this.width,
+			density : 0,
 			dynamism: Box2D.Body.b2_dynamicBody,
 			shape 	: "box"
 		});
 		this.hitBox.SetSensor(true)
 		this.hitBox.GetBody().SetUserData(this);
-		// this.hitBox.GetBody().SetType(0);
-		// this.hitbox.GetBody().GetContactList();
+		this.hitBox.GetBody().hasGravity=false;
 		Game.on("gameObject"+this.id+"Collides", this.elementIsInside, this);
 		
 		
@@ -63,6 +63,5 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move"], function (Bo
 			this.undo();
 		}
 	}
-	
 	return Photo;
 })

@@ -1,5 +1,5 @@
-define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom"],
-	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom){
+define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "MaskControler"],
+	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, MaskControler){
 
 
 	var Player = function Player (args){
@@ -21,7 +21,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.hasGravity = true;
 		this.actionButton = InputsHandler.keyCode.ctrl;
 		this.jumpButton = InputsHandler.keyCode.space;
-		this.spawn={x:x,y:y};
+		this.spawn={x:x,y:y};		
+		this.layer = MaskControler.Player;
+		console.log(this.layer);
 		this.hitBox = Game.createB2Object({
 			x 		 : x,
 			y 		 : y,
@@ -29,7 +31,8 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			dynamism : Box2D.Body.b2_dynamicBody,
 			friction : 0,
 			density  : 0.2,
-			shape	 : "circle"
+			shape	 : "circle",
+			layer    : this.layer
 		});
 		//this.hitBox.GetBody().SetFixedRotation(true);
 		this.hitBox.GetBody().SetLinearDamping(4.5);
@@ -44,6 +47,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 	}
 
 	Player.prototype.actions = function (){
+	//console.log(MaskControler.Player.categoryBits);
 		this.doWaitingActions();
 		this.control();
 		this.draw();

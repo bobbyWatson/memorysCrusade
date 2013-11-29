@@ -1,4 +1,4 @@
-define(["B2D", "Game", "Canvas", "WorldGround"],function (Box2D, Game, Canvas, WorldGround){
+define(["B2D", "Game", "Canvas", "WorldGround", "MaskControler"],function (Box2D, Game, Canvas, WorldGround, MaskControler){
 
 	return function createLevel (levelName){
 		this.canvas.width = this.levels[levelName].width;
@@ -125,6 +125,8 @@ define(["B2D", "Game", "Canvas", "WorldGround"],function (Box2D, Game, Canvas, W
 	    fixDef.density =  1.0;
 	    fixDef.friction = 0.5;
 	    fixDef.restitution = 0.2;
+		fixDef.filter.categoryBits = MaskControler.Ground.categoryBits || 0x0008;
+		fixDef.filter.maskBits = MaskControler.Ground.maskBits || 0x0008;
 		fixDef.shape = new Box2D.PolygonShape;
 
 		var bodyDef = new Box2D.BodyDef(); 

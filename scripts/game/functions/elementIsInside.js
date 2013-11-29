@@ -10,7 +10,7 @@ define(["Game", "Player","B2D"], function (Game, Player,Box2D){
 		}
 
 		if(otherCollider.GetBody().GetUserData().tag !== "Player"){
-			 console.log(Box2D.Body.b2_kinematicBody);
+			console.log(otherCollider);
 			var velocity = {};
 			velocity.x = otherCollider.GetBody().GetLinearVelocity().x;
 			velocity.y = otherCollider.GetBody().GetLinearVelocity().y;
@@ -21,6 +21,7 @@ define(["Game", "Player","B2D"], function (Game, Player,Box2D){
 			otherCollider.GetBody().SetType(0);
 			otherCollider.GetBody().SetLinearVelocity({x:0,y:0});
 			otherCollider.GetBody().SetAngularVelocity(0);
+		
 		}
 	}
 })

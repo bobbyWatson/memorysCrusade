@@ -1,4 +1,4 @@
-define(["Game","B2D", "checkPoint", "isPlayerOut", "doWaitingActions"], function (Game, Box2D, checkPoint, isPlayerOut, doWaitingActions){
+define(["Game","B2D", "checkPoint", "isPlayerOut", "doWaitingActions", "MaskControler"], function (Game, Box2D, checkPoint, isPlayerOut, doWaitingActions, MaskControler){
 
 	var Spawn = function Spawn (args){
 		this.id = Game.ids;
@@ -10,14 +10,15 @@ define(["Game","B2D", "checkPoint", "isPlayerOut", "doWaitingActions"], function
 		this.y = args.y || 0;
 		this.width = 1;
 		this.height = args.height || 4;
-
+		this.layer = MaskControler.ActionPlateform;
 		this.actionBox = Game.createB2Object({
 			x 		 : this.x,
 			y 		 : this.y,
 			width 	 : this.width,
 			height	 : this.height,
 			dynamism : Box2D.Body.b2_kinematicBody,
-			shape	 : "box"
+			shape	 : "box",
+			layer    : this.layer
 		});
 
 		this.actionBox.GetBody().SetUserData(this);

@@ -4574,9 +4574,6 @@ Box2D.postDefs = [];
       return bd;
    }
    b2Body.prototype.ApplyForce = function (force, point) {
-      if (this.m_type != b2Body.b2_dynamicBody) {
-         return "toto";
-      }
       if (this.IsAwake() == false) {
          this.SetAwake(true);
       }
@@ -4983,6 +4980,7 @@ Box2D.postDefs = [];
       this.m_userData = bd.userData;
       this.m_fixtureList = null;
       this.m_fixtureCount = 0;
+	  this.hasGravity = true;
    }
    b2Body.prototype.SynchronizeFixtures = function () {
       var xf1 = b2Body.s_xf1;
@@ -5491,7 +5489,8 @@ Box2D.postDefs = [];
       for (i = 0;
       i < this.m_bodyCount; ++i) {
          b = this.m_bodies[i];
-         if (b.GetType() != b2Body.b2_dynamicBody) continue;
+         if (b.GetType() != b2Body.b2_dynamicBody ) continue;
+		 if(!b.hasGravity) continue;
          b.m_linearVelocity.x += step.dt * (gravity.x + b.m_invMass * b.m_force.x);
          b.m_linearVelocity.y += step.dt * (gravity.y + b.m_invMass * b.m_force.y);
          b.m_angularVelocity += step.dt * b.m_invI * b.m_torque;
