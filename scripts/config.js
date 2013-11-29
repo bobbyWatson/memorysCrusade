@@ -2,6 +2,7 @@ require.config({
 		//urlArgs: "bust=" +  Date.now(),
 
 	 paths: {
+	 		"toto"					: "toto",
 	 		"box2d"					: "libs/box2d",
 	 		"RAF"	    			: "libs/requestAnimFrame",
 	 		"Init"					: "game/Init",
