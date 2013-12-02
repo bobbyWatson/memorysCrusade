@@ -1,5 +1,5 @@
-define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "SpriteSheet", "Animation"],
-	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, SpriteSheet, Animation){
+define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "SpriteSheet", "./game/data/animations/player_anim", "Animation"],
+	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, SpriteSheet, player_anim, Animation){
 
 
 	var Player = function Player (args){
@@ -34,7 +34,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			shape	 : "circle"
 		});
 		//this.hitBox.GetBody().SetFixedRotation(true);
-		this.hitBox.GetBody().SetLinearDamping(4.5);
+		this.hitBox.GetBody().SetLinearDamping(8);
 		this.hitBox.GetBody().SetUserData(this);
 
 		
@@ -47,22 +47,22 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		Game.on("mousewheel",this.Zoom, this);
 		
 		//render
+			//TMP
 		var img = new Image();
 		img.src= "./assets/img/player.png";
-		Player.prototype.spriteSheet = new SpriteSheet({defaultAnimation : "idleRight", image : img, y : -2, height : 3, width: 1.5});
-		Player.prototype.spriteSheet.addAnim({name : "idleRight", anim : { time : 1, 
-																			sprites :[{x :0, y : 0, width : 50, height : 100},
-																			 {x : 50, y : 0, width : 50, height : 100},
-																			 {x : 100, y : 0, width : 50, height : 100},
-																			 {x : 100, y : 0, width : 50, height : 100},
-																			 {x : 150, y : 0, width : 50, height : 100},
-																			 {x : 200, y : 0, width : 50, height : 100}]}})
+			//end TMP
+		var myAnim = new player_anim({parent : this})
+		
+		Player.prototype.spriteSheet = new SpriteSheet({defaultAnimation : "idleRight", image : img, y : -2, height : 3, width: 1.5, animations : myAnim});
+		
 		Player.prototype.animation = new Animation({parent: this});
+		
 	}
 
 	Player.prototype.actions = function (){
 		this.doWaitingActions();
 		this.control();
+		this.animation.checkNext();
 		this.animation.animate();
 		this.draw();
 	}

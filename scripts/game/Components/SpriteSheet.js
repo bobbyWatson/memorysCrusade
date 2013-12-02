@@ -3,7 +3,7 @@ define([], function (){
 	var SpriteSheet = function (args){
 
 		this.defaultAnimation = args.defaultAnimation || "idle";
-		this.animations = {};
+		this.animations = args.animations;
 		this.image = args.image;
 		this.spriteBox = {
 			x : args.x || 0,
@@ -12,10 +12,5 @@ define([], function (){
 			height : args.height || 1
 		}
 	}
-
-		SpriteSheet.prototype.addAnim = function (args){
-			this.animations[args.name] = args.anim;
-		};
-
 	return SpriteSheet;
 })
