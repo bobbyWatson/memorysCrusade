@@ -1,4 +1,4 @@
-define(["B2D","doWaitingActions","Game","elementIsInside", "move"], function (Box2D, doWaitingActions,Game,elementIsInside,move){
+define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControler"], function (Box2D, doWaitingActions,Game,elementIsInside,move,MaskControler){
 
 	var Photo = function Photo (args){
 
@@ -13,6 +13,7 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move"], function (Bo
 		this.height = args.height || 0;
 		this.width = args.width || 0;
 		this.hasGravity=false;
+		this.layer=MaskControler.Photo;
 		this.hitBox = Game.createB2Object({
 			x 		: this.x,
 			y 		: this.y,
@@ -20,7 +21,8 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move"], function (Bo
 			width 	: this.width,
 			density : 0,
 			dynamism: Box2D.Body.b2_dynamicBody,
-			shape 	: "box"
+			shape 	: "box",
+			layer   : this.layer
 		});
 		this.hitBox.SetSensor(true)
 		this.hitBox.GetBody().SetUserData(this);

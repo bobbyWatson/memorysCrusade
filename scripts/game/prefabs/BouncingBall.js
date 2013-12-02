@@ -1,4 +1,4 @@
-define(["Game", "B2D", "doWaitingActions"], function (Game, Box2D, doWaitingActions){
+define(["Game", "B2D", "doWaitingActions", "MaskControler"], function (Game, Box2D, doWaitingActions, MaskControler){
 
 	var BouncingBall = function BouncingBall (args){
 
@@ -9,7 +9,7 @@ define(["Game", "B2D", "doWaitingActions"], function (Game, Box2D, doWaitingActi
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.radius = args.radius || 2;
-
+		this.layer = MaskControler.Object;
 		this.hitBox = Game.createB2Object({
 			x 			: this.x,
 			y	 		: this.y,
@@ -18,7 +18,8 @@ define(["Game", "B2D", "doWaitingActions"], function (Game, Box2D, doWaitingActi
 			shape 		: "circle",
 			friction	: 0.2,
 			density		: 0.2,
-			restitution : 1
+			restitution : 1,
+			layer 		: this.layer
 		});
 
 		this.hitBox.GetBody().SetUserData(this);
