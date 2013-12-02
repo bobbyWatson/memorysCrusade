@@ -1,5 +1,5 @@
-define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "SpriteSheet", "./game/data/animations/player_anim", "Animation"],
-	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, SpriteSheet, player_anim, Animation){
+define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "SpriteSheet", "./game/data/animations/player_anim", "Animation", "AssetsController"],
+	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, SpriteSheet, player_anim, Animation, AssetsController){
 
 
 	var Player = function Player (args){
@@ -47,13 +47,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		Game.on("mousewheel",this.Zoom, this);
 		
 		//render
-			//TMP
-		var img = new Image();
-		img.src= "./assets/img/player.png";
-			//end TMP
 		var myAnim = new player_anim({parent : this})
 		
-		Player.prototype.spriteSheet = new SpriteSheet({defaultAnimation : "idleRight", image : img, y : -2, height : 3, width: 1.5, animations : myAnim});
+		Player.prototype.spriteSheet = new SpriteSheet({defaultAnimation : "idleRight", image : AssetsController.images.player, y : -2, height : 3, width: 1.5, animations : myAnim});
 		
 		Player.prototype.animation = new Animation({parent: this});
 		

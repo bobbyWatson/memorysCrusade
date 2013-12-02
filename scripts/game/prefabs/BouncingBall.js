@@ -1,7 +1,4 @@
-define(["Game", "B2D", "doWaitingActions", "ImageSprite", "draw"], function (Game, Box2D, doWaitingActions, ImageSprite, draw){
-
-	var img = new Image();	
-	img.src = "./assets/img/bouncingBall.png";
+define(["Game", "B2D", "doWaitingActions", "ImageSprite", "draw", "AssetsController"], function (Game, Box2D, doWaitingActions, ImageSprite, draw, AssetsController){
 
 	var BouncingBall = function BouncingBall (args){
 
@@ -26,7 +23,7 @@ define(["Game", "B2D", "doWaitingActions", "ImageSprite", "draw"], function (Gam
 
 		this.hitBox.GetBody().SetUserData(this);
 
-		this.imageSprite = new ImageSprite({image : img, width : this.radius, height : this.radius, followRotation : true});
+		this.imageSprite = new ImageSprite({image : AssetsController.images.bouncingBall, width : this.radius, height : this.radius, followRotation : true});
 	}
 
 	BouncingBall.prototype.doWaitingActions = doWaitingActions;

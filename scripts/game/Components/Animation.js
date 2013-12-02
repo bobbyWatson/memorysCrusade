@@ -28,7 +28,6 @@ define([], function (){
 	} 
 
 	Animation.prototype.play = function (animName){
-		console.log(animName);
 		this.frame = 0;
 		this.currentSprite = 0;
 		this.currentAnim = this.parent.spriteSheet.animations[animName];
