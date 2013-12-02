@@ -4,6 +4,7 @@ require.config({
 	 paths: {
 	 		"toto"					: "toto",
 	 		"box2d"					: "libs/box2d",
+	 		"stats"					: "libs/stats.min",
 	 		"RAF"	    			: "libs/requestAnimFrame",
 	 		"Init"					: "game/Init",
 	 		"B2D"					: "game/Box2D",

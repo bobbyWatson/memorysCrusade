@@ -36,7 +36,7 @@ define(["B2D","doWaitingActions","Game","elementIsInside"], function (Box2D, doW
 
 	Photo.prototype.undo=function(){
 		for(var i = 0; i < this.objects.length; i++){
-			this.objects[i][0].hitBox.GetBody().m_type=2;
+			this.objects[i][0].hitBox.GetBody().SetType(2);
 			this.objects[i][0].hitBox.GetBody().ApplyForce({x:0.1,y:0.1}, {x:0.1,y:0.1});
 			this.objects[i][0].hitBox.GetBody().SetLinearVelocity(this.objects[i][1]);
 			this.objects[i][0].hitBox.GetBody().SetAngularVelocity(this.objects[i][2]);
