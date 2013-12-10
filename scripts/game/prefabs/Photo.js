@@ -13,6 +13,7 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
 		this.height = args.height || 0;
 		this.width = args.width || 0;
 		this.hasGravity=false;
+		this.creator=args.creator || 0;
 		this.layer=MaskControler.Photo;
 		this.hitBox = Game.createB2Object({
 			x 		: this.x,
@@ -49,6 +50,10 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
 				Game.world.DestroyBody(Game.gameObjects[i].hitBox.GetBody())
 				Game.gameObjects.splice(i,1);
 			}
+		}
+		if(this.creator!==0)
+		{
+			this.creator.photoTaken=false;
 		}
 	}
 	

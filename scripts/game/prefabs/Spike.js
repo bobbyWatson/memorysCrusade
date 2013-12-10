@@ -26,8 +26,9 @@ define(["B2D","doWaitingActions","Game","touchPlayer", "MaskControler"], functio
 		});
 		this.hitBox.SetSensor(true)
 		this.hitBox.GetBody().SetUserData(this);
-		// this.hitBox.GetBody().hasGravity=false;
+		this.hitBox.GetBody().hasGravity=false;
 		Game.on("gameObject"+this.id+"Collides", this.touchPlayer, this);	
+		this.hitBox.GetBody().SetLinearVelocity(new Box2D.Vec2(0,0.1));
 	}
 
 	Spike.prototype.actions = function (){
@@ -42,7 +43,9 @@ define(["B2D","doWaitingActions","Game","touchPlayer", "MaskControler"], functio
 
 		this.timeToStay -= 1/60;
 		if(this.timeToStay <= 0){
-			// this.hitBox.GetBody().hasGravity=true;
+			this.hitBox.GetBody().SetLinearVelocity(new Box2D.Vec2(0,5));
+			// this.hitBox.GetBody().SetLinearVelocity(new Box2D.Vec2(0,1));
+			this.hitBox.GetBody().hasGravity=true;
 		}
 	}
 	return Spike;
