@@ -2,8 +2,7 @@ define(["B2D", "Game"], function (Box2D, Game){
 
 	return function move (vec2){
 		if(this.canJump !== undefined){
-				// console.log(this.hitBox.GetBody().GetLinearVelocity().y);
-			if (this.hitBox.GetBody().GetLinearVelocity().y <= 0 && this.hitBox.GetBody().GetLinearVelocity().y >= -0.3) {
+			if (this.jumpBox.GetBody().GetContactList() !== null) {
 				this.canJump = true;
 			}
 		}

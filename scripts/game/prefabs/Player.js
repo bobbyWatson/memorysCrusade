@@ -13,9 +13,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		Game.ids++;
 		this.zoom=1.5;
 		this.tag = "Player";
-		this.speedX = 2;
-		this.speedY = 1;
-		this.jumpForce = 75;
+		this.speedX = 4 ;
+		this.speedY = 3;
+		this.jumpForce = 250;
 		this.canJump = true;
 		this.photoTaken = false;
 		this.hasGravity = true;
@@ -35,11 +35,71 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			shape	 : "circle",
 			layer    : this.layer
 		});
-		//this.hitBox.GetBody().SetFixedRotation(true);
 		this.hitBox.GetBody().SetLinearDamping(8);
 		this.hitBox.GetBody().SetUserData(this);
 
-		
+		this.jointCenter = Game.createB2Object({
+			x 		 : x,
+			y 		 : y,
+			radius	 : 0.5,
+			dynamism : Box2D.Body.b2_dynamicBody,
+			friction : 0,
+			density  : 0.2,
+			shape	 : "circle",
+			layer    : this.layer
+		});
+		this.jointCenter.GetBody().SetUserData(this);
+		this.jointCenter.SetSensor(true);
+		this.jointCenter.GetBody().SetFixedRotation(true);
+
+		this.jumpBox = Game.createB2Object({
+			x 		 : x,
+			y 		 : y,
+			width	 : this.width-0.2,
+			height	 : 0.2,
+			dynamism : Box2D.Body.b2_dynamicBody,
+			friction : 0,
+			density  : 0.2,
+			shape	 : "box",
+			layer    : this.layer
+		});
+		this.jumpBox.GetBody().SetUserData(this);
+		this.jumpBox.SetSensor(true);
+		this.jumpBox.GetBody().SetFixedRotation(true);
+
+		this.hitBox2 = Game.createB2Object({
+			x 		 : x,
+			y 		 : y,
+			width	 : this.width-0.2,
+			height	 : this.height,
+			dynamism : Box2D.Body.b2_dynamicBody,
+			friction : 0,
+			density  : 0.5,
+			shape	 : "box",
+			layer    : this.layer
+		});
+		this.hitBox2.GetBody().SetUserData(this);
+		this.hitBox2.SetSensor(true);
+		this.hitBox2.GetBody().SetFixedRotation(true);
+
+		var jointDef = new Box2D.RevoluteJointDef();
+		jointDef.bodyA = this.hitBox.GetBody();
+		jointDef.bodyB = this.jointCenter.GetBody();
+		jointDef.localAnchorA.Set(0, 0);
+		Game.world.CreateJoint(jointDef);
+
+		var jointDef = new Box2D.RevoluteJointDef();
+		jointDef.bodyB = this.jumpBox.GetBody();
+		jointDef.bodyA = this.jointCenter.GetBody();
+		jointDef.localAnchorA.Set(0, +1);
+		Game.world.CreateJoint(jointDef);
+
+		var jointDef = new Box2D.RevoluteJointDef();
+		jointDef.bodyB = this.hitBox2.GetBody();
+		jointDef.bodyA = this.jointCenter.GetBody();
+		jointDef.localAnchorA.Set(0, -1.5);
+		Game.world.CreateJoint(jointDef);
+
 		//inputs
 		Game.on("pressKey"+this.jumpButton, jump, this);
 		Game.on("pressKey"+this.actionButton, action, this);
