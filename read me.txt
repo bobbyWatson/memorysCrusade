@@ -1,0 +1,5 @@
+le jouer se déplace avec Z, Q, S, D, il saute avec ESPACE, la touche d'action CTRL sert a s'accrocher, la clique gauche de la souris permet de prendre une photo.
+
+Le but du niveau est d'arriver tout à droite en haut de la corniche.
+
+IMPORTANT : pour lancer le jeu lancer un chrome avec un raccorci en rajoutant --allow-file-access-from-files au raccourcis après sa cible.
