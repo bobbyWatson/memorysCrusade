@@ -1,12 +1,16 @@
-define(["Game", "Player"], function (Game, Player){
+define([], function (){
 
 	return function checkPoint( args ){
-		var Player = require("Player");
-		if(Player.prototype.isPrototypeOf(args.m_fixtureA.GetBody().GetUserData()) ||
-			Player.prototype.isPrototypeOf(args.m_fixtureB.GetBody().GetUserData())){
-			args.m_fixtureB.GetBody().GetUserData().spawn={x:this.x,y:this.y};
-			
-			this.playerInside = true;
+		var otherCollider;
+		if(args.m_fixtureA.GetBody().GetUserData().id === this.id){
+			otherCollider = args.m_fixtureB;
+		} else{
+			otherCollider = args.m_fixtureA;
+		}
+
+		if(otherCollider.GetBody().GetUserData().tag === "Player"){
+			otherCollider.GetBody().GetUserData().spawn={x:this.x,y:this.y};
+			console.log(otherCollider.GetBody().GetUserData().spawn);
 		}
 	}
 })

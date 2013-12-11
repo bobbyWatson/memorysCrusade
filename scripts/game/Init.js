@@ -1,5 +1,5 @@
-define(["Game", "AssetsController","Run", "MovingPlateform", "BouncingBall", "Player", "GrabPoint", "B2D", "Ladder", "StaticPlateform", "Camera", "Spawn", "Background", "LevelController"], 
-	function (Game, AssetsController, Run, MovingPlateform, BouncingBall, Player, GrabPoint, Box2D, Ladder, StaticPlateform, Camera, Spawn, Background, LevelController){
+define(["Game", "AssetsController","Run", "Fire", "MovingPlateform", "BouncingBall", "Player", "GrabPoint", "B2D", "Ladder", "StaticPlateform", "Camera", "Spawn", "Background", "LevelController"], 
+	function (Game, AssetsController, Run, Fire, MovingPlateform, BouncingBall, Player, GrabPoint, Box2D, Ladder, StaticPlateform, Camera, Spawn, Background, LevelController){
 	return function Init(){
 		AssetsController.loadImages();
 		AssetsController.waitForImagesLoaded();
@@ -25,6 +25,7 @@ define(["Game", "AssetsController","Run", "MovingPlateform", "BouncingBall", "Pl
 			Game.gameObjects.push(new Spawn({x : 16, y : 25,  height : 5}));
 			Game.gameObjects.push(new Spawn({x : 65, y : 13,  height : 5}));
 			Game.gameObjects.push(new Spawn({x : 162, y : 10,  height : 5}));
+			Game.gameObjects.push(new Fire({x : 0, y : 75,  height : 5, width:1000}));
 			Run.run();
 		})
 	}();
