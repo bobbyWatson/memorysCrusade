@@ -1,4 +1,4 @@
-define(["Game", "B2D", "doWaitingActions", "draw", "ShapeSprite"], function (Game, Box2D, doWaitingActions, draw, ShapeSprite){
+define(["Game", "B2D", "doWaitingActions", "draw", "ShapeSprite", "MaskControler"], function (Game, Box2D, doWaitingActions, draw, ShapeSprite, MaskControler){
 
 	var StaticPlateform = function StaticPlateform (args){
 		this.id = Game.ids;
@@ -9,14 +9,15 @@ define(["Game", "B2D", "doWaitingActions", "draw", "ShapeSprite"], function (Gam
 		this.y = args.y || 0;
 		this.height = args.height || 0.5;
 		this.width = args.width || 1;
-
+		this.layer = MaskControler.Plateform;
 		this.hitBox = Game.createB2Object({
 			x 		: this.x,
 			y 		: this.y,
 			height	: this.height,
 			width	: this.width,
 			dynamism: Box2D.Body.b2_kinematicBody,
-			shape 	: "box"
+			shape 	: "box",
+			layer   : this.layer
 		});
 		this.hitBox.GetBody().SetUserData(this);
 

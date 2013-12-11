@@ -2,6 +2,7 @@ define(["B2D", "Game"], function (Box2D, Game){
 
 	return function move (vec2){
 		if(this.canJump !== undefined){
+				// console.log(this.hitBox.GetBody().GetLinearVelocity().y);
 			if (this.hitBox.GetBody().GetLinearVelocity().y <= 0 && this.hitBox.GetBody().GetLinearVelocity().y >= -0.3) {
 				this.canJump = true;
 			}
@@ -12,6 +13,9 @@ define(["B2D", "Game"], function (Box2D, Game){
 			this.hitBox.GetBody().ApplyForce(antigrav, this.hitBox.GetBody().GetWorldCenter())
 		}
 		var moveVec = new Box2D.Vec2(vec2.x, vec2.y);
-		this.hitBox.GetBody().ApplyImpulse(moveVec,this.hitBox.GetBody().GetWorldCenter());
+		if(this.hitBox.GetBody().GetType()==1)
+			this.hitBox.GetBody().SetLinearVelocity(vec2);
+		else
+			this.hitBox.GetBody().ApplyImpulse(moveVec,this.hitBox.GetBody().GetWorldCenter());
 	}
 })
