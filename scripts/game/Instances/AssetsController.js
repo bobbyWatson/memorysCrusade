@@ -6,7 +6,8 @@ define(["waitForImagesLoaded"], function (waitForImagesLoaded){
         this.imagesName = [
             "bouncingBall.png",
             "level.png",
-            "player.png"
+            "player.png",
+            "ladder.png"
         ]
 
         AssetsController.prototype.instance = this;

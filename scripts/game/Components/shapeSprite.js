@@ -1,4 +1,4 @@
-define([], function (){
+define(["Canvas"], function (Canvas){
 
 	var ShapeSprite = function (args){
 
@@ -10,7 +10,13 @@ define([], function (){
 			height : args.shape === "box" ? args.height || 1 : 0,
 			radius : args.shape === "cicle" ? args.radius || 1 : 0
 		}
-		this.color = args.color || "rgb(180,180,180)";
+		if(args.pattern){
+			this.pattern = true;
+			var pat = Canvas.ctx.createPattern(args.img, args.repeat);
+			this.color = pat;
+		} else{
+			this.color = args.color || "rgb(180,180,180)";
+		}
 		this.followRotation = args.followRotation || false;
 	}
 

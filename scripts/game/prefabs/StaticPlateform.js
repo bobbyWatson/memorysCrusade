@@ -21,6 +21,10 @@ define(["Game", "B2D", "doWaitingActions", "draw", "ShapeSprite"], function (Gam
 		this.hitBox.GetBody().SetUserData(this);
 
 		this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", shape : "box", height : this.height, width : this.width});
+
+		console.log(this.width);
+		console.log(this.hitBox.GetShape());
+		console.log(this.shapeSprite.spriteBox.width);
 	}
 
 	StaticPlateform.prototype.doWaitingActions = doWaitingActions

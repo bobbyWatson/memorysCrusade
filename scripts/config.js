@@ -18,6 +18,7 @@ require.config({
 	 		"Spawn"					: "game/prefabs/Spawn",
 	 		"Photo" 				: "game/prefabs/Photo",
 	 		"Cube" 					: "game/prefabs/Cube",
+	 		"Background"			: "game/prefabs/Background",
 	 		"StaticPlateform"		: "game/prefabs/StaticPlateform",
 	 		"WorldGround"			: "game/prefabs/WorldGround",
 	 		"isPlayerInside"		: "game/functions/IsPlayerInside",
