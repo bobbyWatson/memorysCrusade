@@ -1,4 +1,5 @@
-define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler"], function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler){
+define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler", "draw", "ShapeSprite"], 
+	function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler, draw, ShapeSprite){
 
 	var MovingPlateform = function MovingPlateform (args){
 		this.id = Game.ids;
@@ -28,16 +29,19 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 		this.hitBox.GetBody().SetUserData(this);
 
 		// this.hitBox.SetSensor(true);
-
+		this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", width : this.width, height : this.height, shape : "box"});
 	}
 	MovingPlateform.prototype.actions = function()
 	{
 		this.doWaitingActions();
 		this.checkDirection();
 		this.move(this.vec2);
+		this.draw();
 	}
 	MovingPlateform.prototype.move = move;
 	
+	MovingPlateform.prototype.draw = draw;
+
 	MovingPlateform.prototype.checkDirection = checkDirection;
 	
 	MovingPlateform.prototype.doWaitingActions = doWaitingActions;

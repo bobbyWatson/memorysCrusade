@@ -1,4 +1,5 @@
-define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControler"], function (Box2D, doWaitingActions,Game,elementIsInside,move,MaskControler){
+define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControler", "draw", "ImageSprite", "AssetsController"],
+	function (Box2D, doWaitingActions,Game,elementIsInside,move,MaskControler, draw, ImageSprite, AssetsController){
 
 	var Photo = function Photo (args){
 
@@ -30,13 +31,16 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
 		this.hitBox.GetBody().hasGravity=false;
 		Game.on("gameObject"+this.id+"Collides", this.elementIsInside, this);
 		
-		
+		this.imageSprite = new ImageSprite({image : AssetsController.images.photo, width : this.width, height : this.height});
 	}
 
 	Photo.prototype.actions = function (){
 		this.move({x:0,y:0});
 		this.minusTime()
+		this.draw();
 	}
+
+	Photo.prototype.draw = draw;
 
 	Photo.prototype.undo=function(){
 		for(var i = 0; i < this.objects.length; i++){
