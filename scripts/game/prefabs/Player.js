@@ -13,9 +13,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		Game.ids++;
 		this.zoom=1.5;
 		this.tag = "Player";
-		this.speedX = 4 ;
-		this.speedY = 3;
-		this.jumpForce = 250;
+		this.speedX = 3 ;
+		this.speedY = 2;
+		this.jumpForce = 75;
 		this.canJump = true;
 		this.photoTaken = false;
 		this.hasGravity = true;
@@ -35,7 +35,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			shape	 : "circle",
 			layer    : this.layer
 		});
-		this.hitBox.GetBody().SetLinearDamping(8);
+		this.hitBox.GetBody().SetLinearDamping(15);
 		this.hitBox.GetBody().SetUserData(this);
 
 		this.jointCenter = Game.createB2Object({
@@ -51,6 +51,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.jointCenter.GetBody().SetUserData(this);
 		this.jointCenter.SetSensor(true);
 		this.jointCenter.GetBody().SetFixedRotation(true);
+		this.jointCenter.GetBody().hasGravity=false;
 
 		this.jumpBox = Game.createB2Object({
 			x 		 : x,
@@ -66,6 +67,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.jumpBox.GetBody().SetUserData(this);
 		this.jumpBox.SetSensor(true);
 		this.jumpBox.GetBody().SetFixedRotation(true);
+		this.jumpBox.GetBody().hasGravity=false;
 
 		this.hitBox2 = Game.createB2Object({
 			x 		 : x,
@@ -81,6 +83,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.hitBox2.GetBody().SetUserData(this);
 		this.hitBox2.SetSensor(true);
 		this.hitBox2.GetBody().SetFixedRotation(true);
+		this.hitBox2.GetBody().hasGravity=false;
 
 		var jointDef = new Box2D.RevoluteJointDef();
 		jointDef.bodyA = this.hitBox.GetBody();
@@ -115,6 +118,8 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		
 		Player.prototype.animation = new Animation({parent: this});
 		
+		console.log(this.layer);
+		console.log(this.hitBox.m_filter);
 	}
 
 	Player.prototype.actions = function (){
