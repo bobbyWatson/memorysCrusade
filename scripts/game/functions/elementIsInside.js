@@ -10,7 +10,6 @@ define(["Game", "Player","B2D"], function (Game, Player,Box2D){
 		}
 
 		if(otherCollider.GetBody().GetUserData().tag !== "Player"){
-				console.log(otherCollider.GetBody().GetUserData().hitBox);
 			if(otherCollider.GetBody().GetUserData().hitBox)
 			{
 				var velocity = {};

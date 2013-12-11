@@ -32,11 +32,8 @@ require.config({
 	 		"doWaitingActions"		: "game/functions/DoWaitingActions",
 	 		"checkPoint"			: "game/functions/checkPoint",
 	 		"elementIsInside"		: "game/functions/elementIsInside",
-<<<<<<< HEAD
 	 		"touchPlayer"			: "game/functions/touchPlayer",
-=======
 	 		"checkDirection"		: "game/functions/checkDirection",
->>>>>>> 613a5e64c1e65c9eb633e6c9f783bc6a7879a3a4
 	 		"Zoom"					: "game/functions/Zoom",
 	 		"action"				: "game/functions/Action",
 	 		"down"					: "game/functions/Down",
@@ -57,18 +54,15 @@ require.config({
 	 		"AssetsController"		: "game/Instances/AssetsController",
 	 		"followPlayer"			: "game/functions/Rendering/FollowPlayer",
 	 		"draw"					: "game/functions/Rendering/Draw",
-<<<<<<< HEAD
 	 		"Camera" 				: "game/Instances/Camera",
 	 		"InputsHandler" 		: "game/controlers/InputsHandler",
-	 		"MaskControler" 		: "game/controlers/MaskControler"
-=======
+	 		"MaskControler" 		: "game/controlers/MaskControler",
 	 		"InputsHandler" 		: "game/controlers/InputsHandler",
 	 		"MaskControler" 		: "game/controlers/MaskControler",
 	 		"ImageSprite" 			: "game/Components/ImageSprite",
 	 		"ShapeSprite" 			: "game/Components/ShapeSprite",
 	 		"SpriteSheet" 			: "game/Components/SpriteSheet",
 	 		"Animation" 			: "game/Components/Animation"
->>>>>>> 613a5e64c1e65c9eb633e6c9f783bc6a7879a3a4
 		}
 
 	, shim: {

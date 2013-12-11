@@ -19,8 +19,6 @@ define(["Game", "Canvas", "ImageSprite", "draw", "B2D"], function (Game, Canvas,
         });
         this.hitBox.SetSensor(true);
         this.hitBox.GetBody().SetUserData(this);
-        console.log(args.img.width);
-        console.log(this.width);
         this.imageSprite = new ImageSprite({image : args.img, width : this.width /2, height : this.height /2});
 
     }

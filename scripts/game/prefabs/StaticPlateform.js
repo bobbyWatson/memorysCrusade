@@ -1,4 +1,4 @@
-define(["Game", "B2D", "doWaitingActions", "draw", "MaskControler"], function (Game, Box2D, doWaitingActions, draw, MaskControler){
+define(["Game", "B2D", "doWaitingActions", "draw", "MaskControler", "ShapeSprite"], function (Game, Box2D, doWaitingActions, draw, MaskControler, ShapeSprite){
 
 	var StaticPlateform = function StaticPlateform (args){
 		this.id = Game.ids;
@@ -22,10 +22,6 @@ define(["Game", "B2D", "doWaitingActions", "draw", "MaskControler"], function (G
 		this.hitBox.GetBody().SetUserData(this);
 
 		this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", shape : "box", height : this.height, width : this.width});
-
-		console.log(this.width);
-		console.log(this.hitBox.GetShape());
-		console.log(this.shapeSprite.spriteBox.width);
 	}
 
 	StaticPlateform.prototype.doWaitingActions = doWaitingActions
