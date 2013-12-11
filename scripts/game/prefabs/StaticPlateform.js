@@ -5,7 +5,6 @@ define(["Game", "B2D", "doWaitingActions", "draw", "MaskControler"], function (G
 		Game.ids++;
 		this.waitingActions = [];
 		
-		this.color = "red";
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.height = args.height || 0.5;
@@ -22,6 +21,11 @@ define(["Game", "B2D", "doWaitingActions", "draw", "MaskControler"], function (G
 		});
 		this.hitBox.GetBody().SetUserData(this);
 
+		this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", shape : "box", height : this.height, width : this.width});
+
+		console.log(this.width);
+		console.log(this.hitBox.GetShape());
+		console.log(this.shapeSprite.spriteBox.width);
 	}
 
 	StaticPlateform.prototype.doWaitingActions = doWaitingActions
@@ -32,6 +36,7 @@ define(["Game", "B2D", "doWaitingActions", "draw", "MaskControler"], function (G
 		this.doWaitingActions();
 		this.draw();
 	}
+
 
 	return StaticPlateform;
 })

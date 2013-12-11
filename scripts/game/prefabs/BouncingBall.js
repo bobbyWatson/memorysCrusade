@@ -1,4 +1,4 @@
-define(["Game", "B2D", "doWaitingActions", "MaskControler"], function (Game, Box2D, doWaitingActions, MaskControler){
+define(["Game", "B2D", "doWaitingActions", "ImageSprite", "draw", "AssetsController", "MaskControler"], function (Game, Box2D, doWaitingActions, ImageSprite, draw, AssetsController, MaskControler){
 
 	var BouncingBall = function BouncingBall (args){
 
@@ -10,6 +10,7 @@ define(["Game", "B2D", "doWaitingActions", "MaskControler"], function (Game, Box
 		this.y = args.y || 0;
 		this.radius = args.radius || 2;
 		this.layer = MaskControler.Object;
+
 		this.hitBox = Game.createB2Object({
 			x 			: this.x,
 			y	 		: this.y,
@@ -23,13 +24,19 @@ define(["Game", "B2D", "doWaitingActions", "MaskControler"], function (Game, Box
 		});
 
 		this.hitBox.GetBody().SetUserData(this);
+
+		this.imageSprite = new ImageSprite({image : AssetsController.images.bouncingBall, width : this.radius, height : this.radius, followRotation : true});
 	}
 
 	BouncingBall.prototype.doWaitingActions = doWaitingActions;
 
 	BouncingBall.prototype.actions = function (){
 		this.doWaitingActions();
+		this.draw();
 	}
+
+	BouncingBall.prototype.draw = draw;
 	
+
 	return BouncingBall;
 })

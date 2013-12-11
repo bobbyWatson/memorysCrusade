@@ -1,9 +1,9 @@
 define(["B2D", "Game", "Canvas", "WorldGround", "MaskControler"],function (Box2D, Game, Canvas, WorldGround, MaskControler){
 
-	return function createLevel (levelName){
-		this.canvas.width = this.levels[levelName].width;
-		this.canvas.height = this.levels[levelName].height;
-		this.ctx.drawImage(this.levels[levelName], 0, 0);
+	return function createLevel (level){
+		this.canvas.width = level.width;
+		this.canvas.height = level.height;
+		this.ctx.drawImage(level, 0, 0);
 
 		var IntervalX = 15;
 		var IntervalY = 15;

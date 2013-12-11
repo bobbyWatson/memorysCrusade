@@ -1,17 +1,10 @@
-define(["createLevel"], function (createLevel){
+define(["createLevel", "AssetsController"], function (createLevel, AssetsController){
 
 	var LevelController = function (){
 
 		this.loadedImages = 0;
 		this.canvas = document.createElement("canvas");
 		this.ctx = this.canvas.getContext("2d");
-		this.levels = {
-			level1 :function(){var Img = new Image();
-					Img.src = "./assets/img/level.png";
-					Img.onload = function(){LevelController.instance.createLevel("level1")};
-					return Img;
-			}()
-		}
 		LevelController.instance = this;
 	}
 

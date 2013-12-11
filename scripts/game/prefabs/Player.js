@@ -1,8 +1,8 @@
-define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "MaskControler"],
-	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, MaskControler){
-
+define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "SpriteSheet", "./game/data/animations/player_anim", "Animation", "AssetsController", "MaskControler"],
+	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, SpriteSheet, player_anim, Animation, AssetsController, MaskControler){
 
 	var Player = function Player (args){
+
 		var x = args.x || 15;
 		var y = args.y || 17;
 		this.width = 1;
@@ -21,9 +21,10 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.hasGravity = true;
 		this.actionButton = InputsHandler.keyCode.ctrl;
 		this.jumpButton = InputsHandler.keyCode.space;
-		this.spawn={x:x,y:y};		
+
+		this.spawn={x:x,y:y};
 		this.layer = MaskControler.Player;
-		console.log(this.layer);
+		//the hitbox
 		this.hitBox = Game.createB2Object({
 			x 		 : x,
 			y 		 : y,
@@ -35,21 +36,33 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			layer    : this.layer
 		});
 		//this.hitBox.GetBody().SetFixedRotation(true);
-		this.hitBox.GetBody().SetLinearDamping(4.5);
+		this.hitBox.GetBody().SetLinearDamping(8);
 		this.hitBox.GetBody().SetUserData(this);
 
+		
+		//inputs
 		Game.on("pressKey"+this.jumpButton, jump, this);
 		Game.on("pressKey"+this.actionButton, action, this);
 		Game.on("pressKey"+ InputsHandler.keyCode.s, down, this);
 		Game.on("pressKey"+ InputsHandler.keyCode.z, up, this);		
 		Game.on("click", this.SnapShoot, this);
 		Game.on("mousewheel",this.Zoom, this);
+		
+		//render
+		var myAnim = new player_anim({parent : this})
+		
+		Player.prototype.spriteSheet = new SpriteSheet({defaultAnimation : "idleRight", image : AssetsController.images.player, y : -2, height : 3, width: 1.5, animations : myAnim});
+		
+		Player.prototype.animation = new Animation({parent: this});
+		
 	}
 
 	Player.prototype.actions = function (){
 	//console.log(MaskControler.Player.categoryBits);
 		this.doWaitingActions();
 		this.control();
+		this.animation.checkNext();
+		this.animation.animate();
 		this.draw();
 	}
 	Player.prototype.death = death;
