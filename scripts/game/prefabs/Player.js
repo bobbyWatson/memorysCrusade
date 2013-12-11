@@ -35,9 +35,21 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			shape	 : "circle",
 			layer    : this.layer
 		});
+		this.hitBox2 = Game.createB2Object({
+			x 		 : x,
+			y 		 : y,
+			width 	 : this.width,
+			dynamism : Box2D.Body.b2_dynamicBody,
+			friction : 0,
+			density  : 0.2,
+			shape	 : "box",
+			layer    : this.layer
+		});
 		//this.hitBox.GetBody().SetFixedRotation(true);
 		this.hitBox.GetBody().SetLinearDamping(8);
+		this.hitBox2.GetBody().SetLinearDamping(8);
 		this.hitBox.GetBody().SetUserData(this);
+		this.hitBox2.GetBody().SetUserData(this);
 
 		
 		//inputs
