@@ -2,8 +2,10 @@ define(["B2D", "Game"], function (Box2D, Game){
 
 	return function move (vec2){
 		if(this.canJump !== undefined){
-			if (this.jumpBox.GetBody().GetContactList() !== null) {
+			if (this.jumpBox.GetBody().GetContactList() !== null || this.joint !== undefined) {
 				this.canJump = true;
+			}else{
+				this.canJump = false;
 			}
 		}
 		if(!this.hasGravity){

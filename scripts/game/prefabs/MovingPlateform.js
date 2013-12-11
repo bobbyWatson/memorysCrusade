@@ -11,8 +11,10 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.stockY=this.y;
+		this.stockX=this.x;
 		this.distance = args.dist || 5;
-		this.marge = this.y+this.distance;
+		this.margeY = this.y+this.distance;
+		this.margeX = this.x+this.distance;
 		this.width = args.width || 5;
 		this.height = args.height || 1;
 		this.layer = MaskControler.Plateform;

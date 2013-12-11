@@ -10,6 +10,7 @@ define(["Game", "Player"], function (Game, Player){
 			return false;
 		}
 		player.hasGravity = true;
+		player.hitBox2.GetBody().hasGravity = true;
 		this.playerInside = false;
 	}
 })

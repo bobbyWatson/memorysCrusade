@@ -13,12 +13,11 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		Game.ids++;
 		this.zoom=1.5;
 		this.tag = "Player";
-		this.speedX = 3 ;
+		this.speedX = 8;
 		this.speedY = 2;
-		this.jumpForce = 75;
+		this.jumpForce = 200;
 		this.canJump = true;
 		this.photoTaken = false;
-		this.hasGravity = true;
 		this.actionButton = InputsHandler.keyCode.ctrl;
 		this.jumpButton = InputsHandler.keyCode.space;
 
@@ -81,9 +80,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			layer    : this.layer
 		});
 		this.hitBox2.GetBody().SetUserData(this);
-		this.hitBox2.SetSensor(true);
 		this.hitBox2.GetBody().SetFixedRotation(true);
-		this.hitBox2.GetBody().hasGravity=false;
+		// this.hitBox2.GetBody().hasGravity = false;
+		this.hitBox2.SetSensor(true);
 
 		var jointDef = new Box2D.RevoluteJointDef();
 		jointDef.bodyA = this.hitBox.GetBody();
