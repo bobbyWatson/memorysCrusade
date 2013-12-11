@@ -5,6 +5,8 @@ define(["B2D"], function (Box2D){
     	fixDef.density = args.density || 1.0;
     	fixDef.friction = args.friction || 0.5;
     	fixDef.restitution = args.restitution || 0.2;
+		fixDef.filter.categoryBits = args.layer? args.layer.categoryBits : 0x0008;
+		fixDef.filter.maskBits = args.layer? args.layer.maskBits : 0x0008;
 
     	var bodyDef = new Box2D.BodyDef(); 
     	bodyDef.type = args.dynamism || Box2D.Body.b2_dynamicBody; //dynamic or static

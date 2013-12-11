@@ -1,5 +1,5 @@
-define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "SpriteSheet", "./game/data/animations/player_anim", "Animation", "AssetsController"],
-	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, SpriteSheet, player_anim, Animation, AssetsController){
+define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "Zoom", "SpriteSheet", "./game/data/animations/player_anim", "Animation", "AssetsController", "MaskControler"],
+	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, Zoom, SpriteSheet, player_anim, Animation, AssetsController, MaskControler){
 
 
 	var Player = function Player (args){
@@ -23,6 +23,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.actionButton = InputsHandler.keyCode.ctrl;
 		this.jumpButton = InputsHandler.keyCode.space;
 		this.spawn={x:x,y:y};
+		this.layer = MaskControler.Player;
 		//the hitbox
 		this.hitBox = Game.createB2Object({
 			x 		 : x,
@@ -31,7 +32,8 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			dynamism : Box2D.Body.b2_dynamicBody,
 			friction : 0,
 			density  : 0.2,
-			shape	 : "circle"
+			shape	 : "circle",
+			layer    : this.layer
 		});
 		//this.hitBox.GetBody().SetFixedRotation(true);
 		this.hitBox.GetBody().SetLinearDamping(8);
@@ -81,9 +83,6 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 	Player.prototype.action = action;
 	
 	Player.prototype.doWaitingActions = doWaitingActions;
-
-	Player.prototype.doWaitingActions = doWaitingActions;
-
 
 
 	return Player;

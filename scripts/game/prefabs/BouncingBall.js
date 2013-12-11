@@ -1,4 +1,4 @@
-define(["Game", "B2D", "doWaitingActions", "ImageSprite", "draw", "AssetsController"], function (Game, Box2D, doWaitingActions, ImageSprite, draw, AssetsController){
+define(["Game", "B2D", "doWaitingActions", "ImageSprite", "draw", "AssetsController", "MaskControler"], function (Game, Box2D, doWaitingActions, ImageSprite, draw, AssetsController, MaskControler){
 
 	var BouncingBall = function BouncingBall (args){
 
@@ -9,6 +9,7 @@ define(["Game", "B2D", "doWaitingActions", "ImageSprite", "draw", "AssetsControl
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.radius = args.radius || 2;
+		this.layer = MaskControler.Object;
 
 		this.hitBox = Game.createB2Object({
 			x 			: this.x,
@@ -18,7 +19,8 @@ define(["Game", "B2D", "doWaitingActions", "ImageSprite", "draw", "AssetsControl
 			shape 		: "circle",
 			friction	: 0.2,
 			density		: 0.2,
-			restitution : 1
+			restitution : 1,
+			layer 		: this.layer
 		});
 
 		this.hitBox.GetBody().SetUserData(this);
