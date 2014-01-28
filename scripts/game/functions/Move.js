@@ -3,7 +3,17 @@ define(["B2D", "Game"], function (Box2D, Game){
 	return function move (vec2){
 		if(this.canJump !== undefined){
 			if (this.jumpBox.GetBody().GetContactList() !== null || this.joint !== undefined) {
-				this.canJump = true;
+
+				if(	this.jumpBox.GetBody().GetContactList() !== null 														&&
+					this.jumpBox.GetBody().GetContactList().contact.m_fixtureA !== undefined 								&&
+					(this.jumpBox.GetBody().GetContactList().contact.m_fixtureA.GetBody().GetUserData().hitBox === undefined ||
+					this.jumpBox.GetBody().GetContactList().contact.m_fixtureB.GetBody().GetUserData().hitBox === undefined)){
+					this.canJump = false;
+				}else if(this.isJumping > 0){
+					this.isJumping--;
+				}else{
+					this.canJump = true;
+				}
 			}else{
 				this.canJump = false;
 			}

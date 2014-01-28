@@ -13,6 +13,7 @@ require.config({
 			"Canvas"    			: "game/Canvas",
 	 		"Ladder"				: "game/prefabs/Ladder",
 	 		"GrabPoint"				: "game/prefabs/GrabPoint",
+	 		"DeathZone"				: "game/prefabs/DeathZone",
 	 		"BouncingBall"			: "game/prefabs/BouncingBall",
 	 		"Player"				: "game/prefabs/Player",
 	 		"Spawn"					: "game/prefabs/Spawn",

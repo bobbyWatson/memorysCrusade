@@ -7,8 +7,10 @@ define(["B2D","Game"], function (Box2D, Game){
 				Game.world.DestroyJoint(this.joint);
 				this.joint = undefined;
 			}
+			this.hitBox.GetBody().SetLinearVelocity(new Box2D.Vec2(0,0));
 			this.hitBox.GetBody().ApplyImpulse(moveVec, this.hitBox.GetBody().GetWorldCenter());
 			this.canJump = false
+			this.isJumping = 10;
 		}
 	}
 })

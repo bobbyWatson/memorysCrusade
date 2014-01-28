@@ -1,7 +1,8 @@
 define(["Canvas", "Camera"],function (Canvas, Camera){
 
 	return function draw(){
-
+		//DEBUG
+		//return false;
 		width = this.width === undefined ? this.radius : this.width;
 		height = this.height === undefined ? this.radius : this.height;
 		//find the right component

@@ -1,11 +1,12 @@
-define(["Game", "AssetsController","Run", "MovingPlateform", "BouncingBall", "Player", "GrabPoint", "B2D", "Ladder", "StaticPlateform", "Camera", "Spawn", "Background", "LevelController"], 
-	function (Game, AssetsController, Run, MovingPlateform, BouncingBall, Player, GrabPoint, Box2D, Ladder, StaticPlateform, Camera, Spawn, Background, LevelController){
+define(["Game", "AssetsController","Run", "MovingPlateform", "BouncingBall", "Player", "GrabPoint", "DeathZone", "B2D", "Ladder", "StaticPlateform", "Camera", "Spawn", "Background", "LevelController"], 
+	function (Game, AssetsController, Run, MovingPlateform, BouncingBall, Player, GrabPoint, DeathZone, Box2D, Ladder, StaticPlateform, Camera, Spawn, Background, LevelController){
 	return function Init(){
 		AssetsController.loadImages();
 		AssetsController.waitForImagesLoaded();
 
 		Game.on("all images loaded", function(){
 			LevelController.createLevel(AssetsController.images.level);
+			Game.gameObjects.push(new DeathZone({x : 50, y : 50, width : 100, height: 5}));
 			Game.gameObjects.push(new Background({img : AssetsController.images.level}));
 			Game.gameObjects.push(new GrabPoint({x : 43, y : 26}));
 			Game.gameObjects.push(new GrabPoint({x : 58, y : 26}));

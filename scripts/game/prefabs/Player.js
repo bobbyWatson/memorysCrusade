@@ -20,6 +20,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.photoTaken = false;
 		this.actionButton = InputsHandler.keyCode.ctrl;
 		this.jumpButton = InputsHandler.keyCode.space;
+		this.isJumping = 0;
 
 		this.spawn={x:x,y:y};
 		this.layer = MaskControler.Player;
@@ -55,7 +56,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.jumpBox = Game.createB2Object({
 			x 		 : x,
 			y 		 : y,
-			width	 : this.width-0.2,
+			width	 : this.width-0.6,
 			height	 : 0.2,
 			dynamism : Box2D.Body.b2_dynamicBody,
 			friction : 0,
@@ -81,26 +82,13 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		});
 		this.hitBox2.GetBody().SetUserData(this);
 		this.hitBox2.GetBody().SetFixedRotation(true);
-		// this.hitBox2.GetBody().hasGravity = false;
 		this.hitBox2.SetSensor(true);
 
-		var jointDef = new Box2D.RevoluteJointDef();
-		jointDef.bodyA = this.hitBox.GetBody();
-		jointDef.bodyB = this.jointCenter.GetBody();
-		jointDef.localAnchorA.Set(0, 0);
-		Game.world.CreateJoint(jointDef);
+		this.joint1 = this.CreateJoint1();
 
-		var jointDef = new Box2D.RevoluteJointDef();
-		jointDef.bodyB = this.jumpBox.GetBody();
-		jointDef.bodyA = this.jointCenter.GetBody();
-		jointDef.localAnchorA.Set(0, +1);
-		Game.world.CreateJoint(jointDef);
+		this.joint2 = this.CreateJoint2();
 
-		var jointDef = new Box2D.RevoluteJointDef();
-		jointDef.bodyB = this.hitBox2.GetBody();
-		jointDef.bodyA = this.jointCenter.GetBody();
-		jointDef.localAnchorA.Set(0, -1.5);
-		Game.world.CreateJoint(jointDef);
+		this.joint3 = this.CreateJoint3();
 
 		//inputs
 		Game.on("pressKey"+this.jumpButton, jump, this);
@@ -117,12 +105,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		
 		Player.prototype.animation = new Animation({parent: this});
 		
-		console.log(this.layer);
-		console.log(this.hitBox.m_filter);
 	}
 
 	Player.prototype.actions = function (){
-	//console.log(MaskControler.Player.categoryBits);
 		this.doWaitingActions();
 		this.control();
 		this.animation.checkNext();
@@ -148,6 +133,31 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 	Player.prototype.action = action;
 	
 	Player.prototype.doWaitingActions = doWaitingActions;
+
+	Player.prototype.CreateJoint1 = function(){
+		var jointDef = new Box2D.RevoluteJointDef();
+		jointDef.bodyA = this.hitBox.GetBody();
+		jointDef.bodyB = this.jointCenter.GetBody();
+		jointDef.localAnchorA.Set(0, 0);
+		return Game.world.CreateJoint(jointDef);
+
+	}
+
+	Player.prototype.CreateJoint2 = function(){
+		var jointDef = new Box2D.RevoluteJointDef();
+		jointDef.bodyB = this.jumpBox.GetBody();
+		jointDef.bodyA = this.jointCenter.GetBody();
+		jointDef.localAnchorA.Set(0, +1);
+		return Game.world.CreateJoint(jointDef);
+	}
+
+	Player.prototype.CreateJoint3 = function(){
+		var jointDef = new Box2D.RevoluteJointDef();
+		jointDef.bodyB = this.hitBox2.GetBody();
+		jointDef.bodyA = this.jointCenter.GetBody();
+		jointDef.localAnchorA.Set(0, -1.5);
+		return Game.world.CreateJoint(jointDef);
+	}
 
 	return Player;
 })
