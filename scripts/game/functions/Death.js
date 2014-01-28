@@ -1,4 +1,4 @@
-define(["Player"],function (Player){
+define([],function (){
 	return function Death (Spawn){
 		if(Spawn)
 		{
