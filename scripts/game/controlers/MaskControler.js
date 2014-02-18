@@ -6,7 +6,7 @@ define([], function (){
 		"Object":{categoryBits:0x0005,maskBits:0x0003 | 0x0004 | 0x0008 | 0x0002},
 		"ActionPlateform":{categoryBits:0x0006,maskBits:0x0002},/*
 		"Spike":{categoryBits:0x0007,maskBits:0x0002},
-		*/"Ground":{categoryBits:0x0008,maskBits:0x0002}
+		*/"Ground":{categoryBits:0x0008,maskBits:0x0002 | 0x0003}
 	};
 	return Layer;
 });

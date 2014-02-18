@@ -250,7 +250,7 @@ define([], function (){
             ]
         },
         this.landLeft = {
-            time : 0.5,
+            time : 0.2,
             sprites : [
                 {x :0, y : 800, width : 50, height : 100},
                 {x :50, y : 800, width : 50, height : 100},
@@ -272,7 +272,7 @@ define([], function (){
             ]
         },
         this.landRight = {
-            time : 0.5,
+            time : 0.2,
             sprites : [
                 {x :0, y : 900, width : 50, height : 100},
                 {x :50, y : 900, width : 50, height : 100},

@@ -4,6 +4,7 @@ define(["Canvas", "AddEvent", "B2D", "createB2Object", "emitContactEvent", "emit
 	var Game = function Game (){
 		this.ids = 0;
 		this.gameObjects = [];
+		this.waterArray = [];
 		new Box2D();
 		// this.contactListener = new Box2D.ContactListener();
 

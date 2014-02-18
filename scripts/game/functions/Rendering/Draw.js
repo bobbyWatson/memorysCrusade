@@ -1,8 +1,9 @@
 define(["Canvas", "Camera"],function (Canvas, Camera){
 
 	return function draw(){
-		//DEBUG
-		//return false;
+		// DEBUG
+		// return false;
+
 		width = this.width === undefined ? this.radius : this.width;
 		height = this.height === undefined ? this.radius : this.height;
 		//find the right component
@@ -56,6 +57,12 @@ define(["Canvas", "Camera"],function (Canvas, Camera){
 				if(this.shapeSprite.pattern){
 					Canvas.ctx.fillRect(0, 0, width, height);
 				}else{
+					if(this.shapeSprite.spriteBox.shape === "circle"){
+						Canvas.ctx.beginPath();
+						Canvas.ctx.arc(canvasX, canvasY, this.shapeSprite.spriteBox.radius * Canvas.SCALE, 0, Math.PI*2);
+						Canvas.ctx.fill();
+						Canvas.ctx.closePath();
+					}
 					Canvas.ctx.fillRect(canvasX, canvasY, width, height);
 				}
 			}else if(this.imageSprite !== undefined){

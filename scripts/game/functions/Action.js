@@ -1,4 +1,4 @@
-define(["Game", "B2D", "GrabPoint"], function (Game, Box2D, GrabPoint){
+define(["Game", "B2D"], function (Game, Box2D){
 
 	return function action (){
 		var actionObject;
@@ -8,7 +8,7 @@ define(["Game", "B2D", "GrabPoint"], function (Game, Box2D, GrabPoint){
 			}
 		}
 		if(actionObject){
-			if(GrabPoint.prototype.isPrototypeOf(actionObject)){
+			if(actionObject.tag !== undefined && actionObject.tag === "GrabPoint"){
 				if(this.joint === undefined){
 					var jointDef = new Box2D.DistanceJointDef();
 					jointDef.bodyA = this.hitBox.GetBody();

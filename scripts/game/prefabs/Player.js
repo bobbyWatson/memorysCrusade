@@ -13,9 +13,9 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		Game.ids++;
 		this.zoom=1.5;
 		this.tag = "Player";
-		this.speedX = 8;
+		this.speedX = 5;
 		this.speedY = 2;
-		this.jumpForce = 200;
+		this.jumpForce = 300;
 		this.canJump = true;
 		this.photoTaken = false;
 		this.actionButton = InputsHandler.keyCode.ctrl;
@@ -30,12 +30,12 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			y 		 : y,
 			radius	 : this.width,
 			dynamism : Box2D.Body.b2_dynamicBody,
-			friction : 0,
+			friction : 0.5,
 			density  : 0.2,
 			shape	 : "circle",
 			layer    : this.layer
 		});
-		this.hitBox.GetBody().SetLinearDamping(15);
+		this.hitBox.GetBody().SetLinearDamping(20);
 		this.hitBox.GetBody().SetUserData(this);
 
 		this.jointCenter = Game.createB2Object({

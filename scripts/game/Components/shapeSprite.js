@@ -8,7 +8,7 @@ define(["Canvas"], function (Canvas){
 			shape : args.shape,
 			width : args.shape === "box" ? args.width || 1 : 0,
 			height : args.shape === "box" ? args.height || 1 : 0,
-			radius : args.shape === "cicle" ? args.radius || 1 : 0
+			radius : args.shape === "circle" ? args.radius || 1 : 0
 		}
 		if(args.pattern){
 			this.pattern = true;

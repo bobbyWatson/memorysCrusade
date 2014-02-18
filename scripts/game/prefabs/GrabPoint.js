@@ -6,6 +6,7 @@ define(["Game", "B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions", "Mas
 		this.playerInside = false;
 		Game.ids++;
 		this.waitingActions = [];
+		this.tag = "GrabPoint"
 
 		var x = args.x || 0;
 		var y = args.y || 0;

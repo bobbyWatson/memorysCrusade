@@ -4,6 +4,7 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 	var MovingPlateform = function MovingPlateform (args){
 		this.id = Game.ids;
 		this.playerInside = false;
+		this.tag = "MovingPlateform";
 		Game.ids++;
 		this.waitingActions = [];
 		this.speed=args.speed || 4;
