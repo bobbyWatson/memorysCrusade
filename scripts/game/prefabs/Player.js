@@ -18,7 +18,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.jumpForce = 300;
 		this.canJump = true;
 		this.photoTaken = false;
-		this.actionButton = InputsHandler.keyCode.ctrl;
+		this.actionButton = InputsHandler.keyCode.shift;
 		this.jumpButton = InputsHandler.keyCode.space;
 		this.isJumping = 0;
 

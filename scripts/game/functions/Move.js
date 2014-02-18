@@ -24,9 +24,19 @@ define(["B2D", "Game"], function (Box2D, Game){
 			this.hitBox.GetBody().ApplyForce(antigrav, this.hitBox.GetBody().GetWorldCenter())
 		}
 		var moveVec = new Box2D.Vec2(vec2.x, vec2.y);
-		if(this.hitBox.GetBody().GetType()==1)
+		if(this.hitBox.GetBody().GetType()==1){
 			this.hitBox.GetBody().SetLinearVelocity(vec2);
-		else
+			
+		}
+		else{
+			if(this.joint !== undefined){
+				if(this.joint.m_bodyB.GetUserData().tag!== "Player"){
+					this.joint.m_bodyB.ApplyImpulse(new Box2D.Vec2(moveVec.x * 4,moveVec.y) ,this.joint.m_bodyB.GetWorldCenter());
+				}else{
+					this.joint.m_bodyA.ApplyImpulse(new Box2D.Vec2(moveVec.x * 4,moveVec.y),this.joint.m_bodyA.GetWorldCenter());
+				}
+			}
 			this.hitBox.GetBody().ApplyImpulse(moveVec,this.hitBox.GetBody().GetWorldCenter());
+		}
 	}
 })

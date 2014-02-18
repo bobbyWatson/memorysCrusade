@@ -36,6 +36,7 @@ require.config({
 	 		"createB2Object"		: "game/functions/createB2Object",
 	 		"doWaitingActions"		: "game/functions/DoWaitingActions",
 	 		"checkPoint"			: "game/functions/checkPoint",
+	 		"grabCrates"			: "game/functions/grabCrates",
 	 		"elementIsInside"		: "game/functions/elementIsInside",
 	 		"touchPlayer"			: "game/functions/touchPlayer",
 	 		"checkDirection"		: "game/functions/checkDirection",

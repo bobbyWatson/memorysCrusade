@@ -14,7 +14,7 @@ define(["Game","RAF", "Camera", "Canvas","stats", "drawWater"], function (Game, 
 		Canvas.ctx.fillStyle = 'rgb(0,0,0)';
 		Canvas.ctx.fillRect(0,0,Canvas.DOM.width, Canvas.DOM.height);
 
-    	// Game.world.DrawDebugData();
+    	Game.world.DrawDebugData();
      	Game.world.ClearForces(); 
      	
      	Camera.actions();
