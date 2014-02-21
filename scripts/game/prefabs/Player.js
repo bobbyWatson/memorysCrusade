@@ -101,7 +101,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		//render
 		var myAnim = new player_anim({parent : this})
 		
-		Player.prototype.spriteSheet = new SpriteSheet({defaultAnimation : "idleRight", image : AssetsController.images.player, y : -2, height : 3, width: 1.5, animations : myAnim});
+		Player.prototype.spriteSheet = new SpriteSheet({defaultAnimation : "idleRight", image : AssetsController.images.player, y : -1.8, height : 3, width: 3, animations : myAnim});
 		
 		Player.prototype.animation = new Animation({parent: this});
 		
