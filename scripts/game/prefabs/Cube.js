@@ -1,5 +1,5 @@
-define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "ShapeSprite", "isPlayerOut"], 
-	function (Game, Box2D, doWaitingActions,MaskControler, grabCrates, draw, ShapeSprite,isPlayerOut){
+define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "ImageSprite", "AssetsController", "isPlayerOut"], 
+	function (Game, Box2D, doWaitingActions,MaskControler, grabCrates, draw, ImageSprite, AssetsController, isPlayerOut){
 
 	var Cube = function Cube (args){
 
@@ -39,13 +39,14 @@ define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "S
 		});
 		this.actionbox.SetSensor(true);
 		this.hitBox.GetBody().SetLinearDamping(0);
-		// this.hitBox.GetBody().SetFixedRotation(true);
+		this.hitBox.GetBody().SetFixedRotation(true);
 		var jointDef = new Box2D.RevoluteJointDef();
 		jointDef.bodyA = this.hitBox.GetBody();
 		jointDef.bodyB = this.actionbox.GetBody();
 		jointDef.localAnchorA.Set(0, 0);
 		Game.world.CreateJoint(jointDef);
-		this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", width : this.width, height : this.height, shape : "box"});
+		// this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", width : this.width, height : this.height, shape : "box"});
+		this.imageSprite = new ImageSprite({image : AssetsController.images.props_pierre, width : this.width*3, height : this.height*3,y:-1.5});
 		this.hitBox.GetBody().SetUserData(this);
 		this.actionbox.GetBody().SetUserData(this);
 		Game.on("gameObject"+this.id+"Collides", this.grabCrates, this);

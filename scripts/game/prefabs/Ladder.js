@@ -30,7 +30,7 @@ define(["Game","B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions",  "dra
 		
 		Game.on("gameObject"+this.id+"EndCollides", this.isPlayerOut, this);
 
-		this.shapeSprite = new ShapeSprite({pattern : true, img : AssetsController.images.ladder, repeat : "repeat-y" , shape : "box", height : this.height, width : this.width,});
+		this.shapeSprite = new ShapeSprite({pattern : true, img : AssetsController.images.ladder, repeat : "repeat-y" , shape : "box", height : this.height, width : this.width});
 	}
 
 	Ladder.prototype.isPlayerInside = isPlayerInside;

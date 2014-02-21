@@ -26,6 +26,7 @@ define(["Game", "B2D"], function (Game, Box2D){
 					jointDef.localAnchorA.Set(3, 0);
 					this.joint = Game.world.CreateJoint(jointDef);
 					actionObject.hitBox.GetBody().SetLinearDamping(0);
+					// actionObject.hitBox.GetBody().SetFixedRotation(true);
 
 				}
 			} 			

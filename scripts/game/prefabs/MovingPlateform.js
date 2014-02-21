@@ -1,5 +1,5 @@
-define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler", "draw", "ShapeSprite"], 
-	function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler, draw, ShapeSprite){
+define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler", "draw","AssetsController", "ImageSprite"], 
+	function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler, draw, AssetsController, ImageSprite){
 
 	var MovingPlateform = function MovingPlateform (args){
 		this.id = Game.ids;
@@ -17,7 +17,7 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 		this.margeY = this.y+this.distance;
 		this.margeX = this.x+this.distance;
 		this.width = args.width || 5;
-		this.height = args.height || 1;
+		this.height = args.height || 3;
 		this.layer = MaskControler.Plateform;
 		this.hitBox = Game.createB2Object({
 			x 		 : this.x,
@@ -30,10 +30,7 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 		});
 
 		this.hitBox.GetBody().SetUserData(this);
-
-		// this.hitBox.SetSensor(true);
-
-		this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", width : this.width, height : this.height, shape : "box"});
+		this.imageSprite = new ImageSprite({image : AssetsController.images.Props2, width : this.width+2, height : this.height+10,x:0,y:7, followRotation : true});
 	}
 	MovingPlateform.prototype.actions = function()
 	{

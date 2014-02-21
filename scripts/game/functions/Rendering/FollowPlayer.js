@@ -19,5 +19,18 @@ define(["Game", "Canvas"], function (Game, Canvas){
 		} else{
 			this.y = this.height/2;
 		}
+		if(this.hitBox !== undefined)
+		{
+			var _pos = {x :this.width/2, y : this.height/2};
+			if(this.x >= this.width*Canvas.SCALE/2)
+			{
+				_pos.x = this.x/Canvas.SCALE;
+			}
+			if(this.y >= this.height * Canvas.SCALE/2)
+			{
+				_pos.y = this.y/Canvas.SCALE;
+			}
+			this.hitBox.GetBody().SetPosition(_pos);
+		}
 	}
 })

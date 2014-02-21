@@ -6,8 +6,12 @@ define(["waitForImagesLoaded"], function (waitForImagesLoaded){
         this.imagesName = [
             "bouncingBall.png",
             "level.png",
+            "BG.png",
             "player.png",
             "ladder.png",
+            "Props2.png",
+            "Props3.png",
+            "props_pierre.png",
             "photo.png"
         ]
 

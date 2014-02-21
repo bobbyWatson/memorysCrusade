@@ -13,8 +13,8 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		Game.ids++;
 		this.zoom=1.5;
 		this.tag = "Player";
-		this.speedX = 5;
-		this.speedY = 2;
+		this.speedX = 8;
+		this.speedY = 5;
 		this.jumpForce = 300;
 		this.canJump = true;
 		this.photoTaken = false;
@@ -53,21 +53,21 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.jointCenter.GetBody().SetFixedRotation(true);
 		this.jointCenter.GetBody().hasGravity=false;
 
-		this.jumpBox = Game.createB2Object({
-			x 		 : x,
-			y 		 : y,
-			width	 : this.width-0.6,
-			height	 : 0.2,
-			dynamism : Box2D.Body.b2_dynamicBody,
-			friction : 0,
-			density  : 0.2,
-			shape	 : "box",
-			layer    : this.layer
-		});
-		this.jumpBox.GetBody().SetUserData(this);
-		this.jumpBox.SetSensor(true);
-		this.jumpBox.GetBody().SetFixedRotation(true);
-		this.jumpBox.GetBody().hasGravity=false;
+		// this.jumpBox = Game.createB2Object({
+			// x 		 : x,
+			// y 		 : y,
+			// width	 : this.width-0.6,
+			// height	 : 0.2,
+			// dynamism : Box2D.Body.b2_dynamicBody,
+			// friction : 0,
+			// density  : 0.2,
+			// shape	 : "box",
+			// layer    : this.layer
+		// });
+		// this.jumpBox.GetBody().SetUserData(this);
+		// this.jumpBox.SetSensor(true);
+		// this.jumpBox.GetBody().SetFixedRotation(true);
+		// this.jumpBox.GetBody().hasGravity=false;
 
 		this.hitBox2 = Game.createB2Object({
 			x 		 : x,
@@ -86,7 +86,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 
 		this.joint1 = this.CreateJoint1();
 
-		this.joint2 = this.CreateJoint2();
+		// this.joint2 = this.CreateJoint2();
 
 		this.joint3 = this.CreateJoint3();
 
@@ -143,13 +143,13 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 
 	}
 
-	Player.prototype.CreateJoint2 = function(){
-		var jointDef = new Box2D.RevoluteJointDef();
-		jointDef.bodyB = this.jumpBox.GetBody();
-		jointDef.bodyA = this.jointCenter.GetBody();
-		jointDef.localAnchorA.Set(0, +1);
-		return Game.world.CreateJoint(jointDef);
-	}
+	// Player.prototype.CreateJoint2 = function(){
+		// var jointDef = new Box2D.RevoluteJointDef();
+		// jointDef.bodyB = this.jumpBox.GetBody();
+		// jointDef.bodyA = this.jointCenter.GetBody();
+		// jointDef.localAnchorA.Set(0, +1);
+		// return Game.world.CreateJoint(jointDef);
+	// }
 
 	Player.prototype.CreateJoint3 = function(){
 		var jointDef = new Box2D.RevoluteJointDef();
@@ -158,6 +158,11 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		jointDef.localAnchorA.Set(0, -1.5);
 		return Game.world.CreateJoint(jointDef);
 	}
-
+	// Player.prototype.abbleToJump(e,f)
+	// {
+		// console.log(e,f);
+		// this.canJump=true;
+	// }
+	
 	return Player;
 })

@@ -1,22 +1,39 @@
-define(["B2D", "Game"], function (Box2D, Game){
+define(["B2D", "Game"], function (Box2D, Game){
 
 	return function move (vec2){
-		if(this.canJump !== undefined){
-			if (this.jumpBox.GetBody().GetContactList() !== null || this.joint !== undefined) {
+		// if(this.canJump !== undefined){
+			// if (this.jumpBox.GetBody().GetContactList() !== null || this.joint !== undefined) {
 
-				if(	this.jumpBox.GetBody().GetContactList() !== null 														&&
-					this.jumpBox.GetBody().GetContactList().contact.m_fixtureA !== undefined 								&&
-					(this.jumpBox.GetBody().GetContactList().contact.m_fixtureA.GetBody().GetUserData().hitBox === undefined ||
-					this.jumpBox.GetBody().GetContactList().contact.m_fixtureB.GetBody().GetUserData().hitBox === undefined)){
-					this.canJump = false;
-				}else if(this.isJumping > 0){
-					this.isJumping--;
-				}else{
-					this.canJump = true;
-				}
-			}else{
-				this.canJump = false;
-			}
+				// if(	this.jumpBox.GetBody().GetContactList() !== null 														&&
+					// this.jumpBox.GetBody().GetContactList().contact.m_fixtureA !== undefined 								&&
+					// (this.jumpBox.GetBody().GetContactList().contact.m_fixtureA.GetBody().GetUserData().hitBox === undefined ||
+					// this.jumpBox.GetBody().GetContactList().contact.m_fixtureB.GetBody().GetUserData().hitBox === undefined)){
+					// this.canJump = false;
+				// }else if(this.isJumping > 0){
+					// this.isJumping--;
+				// }else{
+					// this.canJump = true;
+				// }
+			// }else{
+				// this.canJump = false;
+			// }
+		// }
+		if(this.hitBox2)
+		{
+			var startOfRay = new Box2D.Vec2(this.hitBox2.GetBody().GetPosition().x,this.hitBox2.GetBody().GetPosition().y);
+			var endOfRay =new Box2D.Vec2(this.hitBox2.GetBody().GetPosition().x,this.hitBox2.GetBody().GetPosition().y+3);
+		
+		// console.log(this);
+		var _this=this;	
+		Game.world.RayCast(test, startOfRay, endOfRay);
+		function test(e,t)
+		{
+			if(e.GetBody().GetUserData().tag !== "Player")
+				// console.log(e);
+				if(!e.IsSensor())
+					_this.canJump = true;
+			
+		}
 		}
 		if(!this.hasGravity){
 			var gravity = Game.world.GetGravity();
@@ -28,12 +45,13 @@ define(["B2D", "Game"], function (Box2D, Game){
 			this.hitBox.GetBody().SetLinearVelocity(vec2);
 			
 		}
+		
 		else{
 			if(this.joint !== undefined){
 				if(this.joint.m_bodyB.GetUserData().tag!== "Player"){
-					this.joint.m_bodyB.ApplyImpulse(new Box2D.Vec2(moveVec.x * 4,moveVec.y) ,this.joint.m_bodyB.GetWorldCenter());
+					this.joint.m_bodyB.ApplyImpulse(new Box2D.Vec2(moveVec.x *2,moveVec.y) ,this.joint.m_bodyB.GetWorldCenter());
 				}else{
-					this.joint.m_bodyA.ApplyImpulse(new Box2D.Vec2(moveVec.x * 4,moveVec.y),this.joint.m_bodyA.GetWorldCenter());
+					this.joint.m_bodyA.ApplyImpulse(new Box2D.Vec2(moveVec.x *2,moveVec.y),this.joint.m_bodyA.GetWorldCenter());
 				}
 			}
 			this.hitBox.GetBody().ApplyImpulse(moveVec,this.hitBox.GetBody().GetWorldCenter());

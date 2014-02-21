@@ -22,6 +22,7 @@ define(["Game", "B2D", "doWaitingActions", "draw", "MaskControler", "ShapeSprite
 		this.hitBox.GetBody().SetUserData(this);
 
 		this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", shape : "box", height : this.height, width : this.width});
+
 	}
 
 	StaticPlateform.prototype.doWaitingActions = doWaitingActions
