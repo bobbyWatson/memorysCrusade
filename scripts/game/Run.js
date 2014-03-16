@@ -24,7 +24,10 @@ define(["Game","RAF", "Camera", "Canvas","stats", "drawWater"], function (Game, 
         //drawWater();
 		stats.end();
 		RAF(Run.instance.run);
+
 	}
+
+
 
 	new Run();
 
