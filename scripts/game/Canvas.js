@@ -14,6 +14,16 @@ define([], function (){
 		this.DOM.style.left = -this.DOM.width/2 + "px";
 		document.body.appendChild(this.DOM);
 
+		this.darkWorldCanvas = document.createElement("canvas");
+		this.darkWorldCanvas.width = this.DOM.width;
+		this.darkWorldCanvas.height = this.DOM.height;
+		this.darkWorldCtx = this.darkWorldCanvas.getContext("2d");
+
+		this.bfr = document.createElement("canvas");
+		this.bfr.width = 300;
+		this.bfr.height = 300;
+		this.bfrCtx = this.bfr.getContext("2d");
+		
 		Canvas.instance = this;
 	}
 

@@ -1,9 +1,9 @@
 define(["Canvas", "Camera"],function (Canvas, Camera){
 
-	return function draw(){
+	return function draw(_ctx){
 		// DEBUG
 		// return false;
-
+		var ctx = _ctx === undefined ? Canvas.ctx : _ctx;
 		width = this.width === undefined ? this.radius : this.width;
 		height = this.height === undefined ? this.radius : this.height;
 		//find the right component
@@ -15,7 +15,7 @@ define(["Canvas", "Camera"],function (Canvas, Camera){
 			var spriteComponent = this.spriteSheet;
 		}
 
-		Canvas.ctx.fillStyle = spriteComponent.color === undefined ? "rgb(0,0,0)" : spriteComponent.color;
+		ctx.fillStyle = spriteComponent.color === undefined ? "rgb(0,0,0)" : spriteComponent.color;
 
 		var box2DPosition = {};
 		if(this.hitBox !== undefined){
@@ -33,46 +33,46 @@ define(["Canvas", "Camera"],function (Canvas, Camera){
 
 		//For rotation
 		if(spriteComponent.followRotation){
-			Canvas.ctx.save();
-			Canvas.ctx.translate(box2DPosition.x * Canvas.SCALE - (Camera.x - Camera.width/2), box2DPosition.y * Canvas.SCALE  - (Camera.y - Camera.height/2));
-			Canvas.ctx.rotate(this.hitBox.GetBody().GetAngle());
+			ctx.save();
+			ctx.translate(box2DPosition.x * Canvas.SCALE - (Camera.x - Camera.width/2), box2DPosition.y * Canvas.SCALE  - (Camera.y - Camera.height/2));
+			ctx.rotate(this.hitBox.GetBody().GetAngle());
 			//Draw the sprite
 			if(this.shapeSprite !== undefined){
-				Canvas.ctx.fillRect(-width/2, -height/2, width, height);
+				ctx.fillRect(-width/2, -height/2, width, height);
 			}else{
-				Canvas.ctx.drawImage(spriteComponent.image, -width/2, -height/2, width, height);
+				ctx.drawImage(spriteComponent.image, -width/2, -height/2, width, height);
 			}
-			Canvas.ctx.restore();
+			ctx.restore();
 		}
 		//No rotation
 		else{
 			var canvasX = box2DPosition.x * Canvas.SCALE - (Camera.x - Camera.width/2) - width/2;
 			var canvasY = box2DPosition.y * Canvas.SCALE - (Camera.y - Camera.height/2) - height/2;
 			if( this.shapeSprite !== undefined && this.shapeSprite.pattern){
-				Canvas.ctx.save();
-				Canvas.ctx.translate(canvasX, canvasY);
+				ctx.save();
+				ctx.translate(canvasX, canvasY);
 			}
 			//Draw the sprite
 			if(this.shapeSprite !== undefined){
 				if(this.shapeSprite.pattern){
-					Canvas.ctx.fillRect(0, 0, width, height);
+					ctx.fillRect(0, 0, width, height);
 				}else{
 					if(this.shapeSprite.spriteBox.shape === "circle"){
-						Canvas.ctx.beginPath();
-						Canvas.ctx.arc(canvasX, canvasY, this.shapeSprite.spriteBox.radius * Canvas.SCALE, 0, Math.PI*2);
-						Canvas.ctx.fill();
-						Canvas.ctx.closePath();
+						ctx.beginPath();
+						ctx.arc(canvasX, canvasY, this.shapeSprite.spriteBox.radius * Canvas.SCALE, 0, Math.PI*2);
+						ctx.fill();
+						ctx.closePath();
 					}
-					Canvas.ctx.fillRect(canvasX, canvasY, width, height);
+					ctx.fillRect(canvasX, canvasY, width, height);
 				}
 			}else if(this.imageSprite !== undefined){
-				Canvas.ctx.drawImage(spriteComponent.image, canvasX, canvasY, width, height);
+				ctx.drawImage(spriteComponent.image, canvasX, canvasY, width, height);
 			}else{
 				var sprite = this.animation.currentAnim.sprites[this.animation.currentSprite];
-				Canvas.ctx.drawImage(spriteComponent.image, sprite.x, sprite.y, sprite.width, sprite.height, canvasX, canvasY, width, height);
+				ctx.drawImage(spriteComponent.image, sprite.x, sprite.y, sprite.width, sprite.height, canvasX, canvasY, width, height);
 			}
 			if( this.shapeSprite !== undefined && this.shapeSprite.pattern)
-				Canvas.ctx.restore();
+				ctx.restore();
 		}
 
 	}

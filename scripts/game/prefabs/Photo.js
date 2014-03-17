@@ -9,6 +9,7 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
 		
 		this.timeToStay = 2.0;
 		this.objects = [];
+		console.log(args.x);
 		this.x = args.x || 0;
 		this.y = args.y || 0;
 		this.height = args.height || 0;

@@ -10710,7 +10710,6 @@ Box2D.postDefs = [];
       this.m_sprite = {
          graphics: {
             clear: function () {
-               __this.m_ctx.clearRect(0, 0, __this.m_ctx.canvas.width, __this.m_ctx.canvas.height)
             }
          }
       };

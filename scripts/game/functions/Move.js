@@ -1,23 +1,7 @@
-define(["B2D", "Game"], function (Box2D, Game){
+
+define(["B2D", "Game"], function (Box2D, Game){
 
 	return function move (vec2){
-		// if(this.canJump !== undefined){
-			// if (this.jumpBox.GetBody().GetContactList() !== null || this.joint !== undefined) {
-
-				// if(	this.jumpBox.GetBody().GetContactList() !== null 														&&
-					// this.jumpBox.GetBody().GetContactList().contact.m_fixtureA !== undefined 								&&
-					// (this.jumpBox.GetBody().GetContactList().contact.m_fixtureA.GetBody().GetUserData().hitBox === undefined ||
-					// this.jumpBox.GetBody().GetContactList().contact.m_fixtureB.GetBody().GetUserData().hitBox === undefined)){
-					// this.canJump = false;
-				// }else if(this.isJumping > 0){
-					// this.isJumping--;
-				// }else{
-					// this.canJump = true;
-				// }
-			// }else{
-				// this.canJump = false;
-			// }
-		// }
 		if(this.hitBox2)
 		{
 			var startOfRay = new Box2D.Vec2(this.hitBox2.GetBody().GetPosition().x,this.hitBox2.GetBody().GetPosition().y);

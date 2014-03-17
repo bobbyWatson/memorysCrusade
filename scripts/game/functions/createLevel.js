@@ -5,7 +5,7 @@ define(["B2D", "Game", "Canvas", "WorldGround", "MaskControler"],function (Box2D
 		this.canvas.height = level.height;
 		this.ctx.drawImage(level, 0, 0);
 
-		var IntervalX = 15;
+		var IntervalX = 20;
 		var IntervalY = 15;
 		var ImageData = this.ctx.getImageData(0,0,this.canvas.width, this.canvas.height).data;
 		var alphaArray = [];

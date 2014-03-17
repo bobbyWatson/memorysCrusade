@@ -1,7 +1,8 @@
-define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler", "draw","AssetsController", "ImageSprite"], 
-	function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler, draw, AssetsController, ImageSprite){
+define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler", "draw","AssetsController", "ImageSprite", "GrabPoint"], 
+	function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler, draw, AssetsController, ImageSprite, GrabPoint){
 
 	var MovingPlateform = function MovingPlateform (args){
+		this.ctx = args.ctx;
 		this.id = Game.ids;
 		this.playerInside = false;
 		this.tag = "MovingPlateform";
@@ -31,13 +32,16 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 
 		this.hitBox.GetBody().SetUserData(this);
 		this.imageSprite = new ImageSprite({image : AssetsController.images.Props2, width : this.width+2, height : this.height+10,x:0,y:7, followRotation : true});
+
+		Game.gameObjects.push(new GrabPoint({x : this.x - this.width , y : this.y - this.height/1.5, follow : this}));
+		Game.gameObjects.push(new GrabPoint({x : this.x + this.width , y : this.y - this.height/1.5, follow : this}));
 	}
 	MovingPlateform.prototype.actions = function()
 	{
 		this.doWaitingActions();
 		this.checkDirection();
 		this.move(this.vec2);
-		this.draw();
+		this.draw(this.ctx);
 	}
 	MovingPlateform.prototype.move = move;
 	
