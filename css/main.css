@@ -1,7 +1,20 @@
 body{
 	background-color: #000;
 }
+#Game{
+
+}
 #canvas{
 	border: 1px solid white;
 	position: absolute;
+}
+
+#photoType{
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    margin-left: 100px;
+    margin-top: 50px;
+    background-image: url("../assets/img/oldPhoto.png");
+    background-size: 100%;
 }
