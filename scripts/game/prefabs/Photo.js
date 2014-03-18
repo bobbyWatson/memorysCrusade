@@ -50,12 +50,7 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
 			this.objects[i][0].hitBox.GetBody().SetLinearVelocity(this.objects[i][1]);
 			this.objects[i][0].hitBox.GetBody().SetAngularVelocity(this.objects[i][2]);
 		}
-		for (var i=0;i<Game.gameObjects.length;i++){
-			if(Game.gameObjects[i].id == this.id){
-				Game.world.DestroyBody(Game.gameObjects[i].hitBox.GetBody())
-				Game.gameObjects.splice(i,1);
-			}
-		}
+		this.isDead = true;
 		if(this.creator!==0)
 		{
 			this.creator.photoTaken=false;

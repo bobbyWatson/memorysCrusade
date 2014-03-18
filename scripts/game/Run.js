@@ -22,6 +22,10 @@ define(["Game","RAF", "Camera", "Canvas","stats", "drawWater"], function (Game, 
         for(var i = 0; i < Game.gameObjects.length; i++){
             Game.gameObjects[i].actions();
             if(Game.gameObjects[i].isDead === true){
+                if(Game.gameObjects[i].hitBox !== undefined)
+                    Game.world.DestroyBody(Game.gameObjects[i].hitBox.GetBody())
+                if(Game.gameObjects[i].actionBox !== undefined)
+                    Game.world.DestroyBody(Game.gameObjects[i].actionBox.GetBody())
                 Game.gameObjects.splice(i,1);
                 i--;
             }
