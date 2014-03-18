@@ -9,9 +9,6 @@ define(["Game"], function (Game){
 		}
 
 		if(otherCollider.GetBody().GetUserData().tag === "Player"){
-		console.log(otherCollider.GetBody().GetUserData().spawn);
-		console.log(otherCollider.GetBody().GetUserData());
-		console.log(otherCollider.GetBody().GetUserData().death);
 			otherCollider.GetBody().GetUserData().death(otherCollider.GetBody().GetUserData().spawn);
 		}
 	}

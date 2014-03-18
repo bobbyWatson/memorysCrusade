@@ -23,6 +23,8 @@ require.config({
 	 		"DarkPhoto" 			: "game/prefabs/DarkPhoto",
 	 		"Cube" 					: "game/prefabs/Cube",
 	 		"Spike" 				: "game/prefabs/Spike",
+	 		"Pikes" 				: "game/prefabs/Pikes",
+	 		"FallingDanger" 		: "game/prefabs/FallingDanger",
 	 		"Fire" 				    : "game/prefabs/Fire",
 	 		"Background"			: "game/prefabs/Background",
 	 		"MovingPlateform" 		: "game/prefabs/MovingPlateform",

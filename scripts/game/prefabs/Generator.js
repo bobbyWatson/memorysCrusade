@@ -11,10 +11,11 @@ define(["Game", "Water"], function (Game, Water){
 
         this.model = args.model;
         this.params = args.params;
+        this.params.x = this.params.x === undefined ? x : this.params.x;
+        this.params.y = this.params.y === undefined ? y : this.params.y;
         this.popTime = args.time;
         this.timePast = 0;
         this.objNumber = 0;
-        //this.instanciationArray = Water === this.model? Game.gameObjects : Game.gameObjects;
     }
 
     Generator.prototype.actions = function(){
@@ -27,8 +28,6 @@ define(["Game", "Water"], function (Game, Water){
         if(this.timePast == this.popTime){
             this.timePast = 0;
             this.objNumber++;
-            console.log(this.objNumber);
-            //this.instanciationArray.push(new this.model(this.params));
             Game.gameObjects.push(new this.model(this.params));
         }
     }

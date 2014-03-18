@@ -21,6 +21,10 @@ define(["Game","RAF", "Camera", "Canvas","stats", "drawWater"], function (Game, 
         Camera.actions();
         for(var i = 0; i < Game.gameObjects.length; i++){
             Game.gameObjects[i].actions();
+            if(Game.gameObjects[i].isDead === true){
+                Game.gameObjects.splice(i,1);
+                i--;
+            }
         }
         // Game.world.DrawDebugData();
 		stats.end();

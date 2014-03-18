@@ -14,7 +14,9 @@ define(["waitForImagesLoaded"], function (waitForImagesLoaded){
             "Props3.png",
             "props_pierre.png",
             "photo.png",
-            "darkPhoto.png"
+            "darkPhoto.png",
+            "pikes.png",
+            "fallingDanger.png"
         ]
 
         AssetsController.prototype.instance = this;

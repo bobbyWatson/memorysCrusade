@@ -3,6 +3,7 @@ define(["Game"], function (Game){
 	var WorldGround = function (args){
 		this.id = Game.ids;
 		Game.ids++;
+		this.tag = "Ground";
 		
 		this.color = "red";
 

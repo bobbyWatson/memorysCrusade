@@ -5,7 +5,7 @@ define(["Canvas", "AddEvent", "B2D", "createB2Object", "emitContactEvent", "emit
 		this.currentPhotoDOM = document.createElement("div");
 		this.currentPhotoDOM.id = "photoType";
 		document.getElementById("Game").appendChild(this.currentPhotoDOM);
-		document.getElementById("Game").style.marginLeft = ( window.innerWidth/2 - Canvas.DOM.width/2 ) + "px";
+		document.getElementById("Game").style.marginLeft = ( window.innerWidth/2 - Canvas.DOM.width / 2 ) + "px";
 		this.ids = 0;
 		this.gameObjects = [];
 		this.waterArray = [];
