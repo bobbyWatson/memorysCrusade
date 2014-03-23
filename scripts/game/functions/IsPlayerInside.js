@@ -1,9 +1,8 @@
-define(["Game", "Player"], function (Game, Player){
+define(["Game"], function (Game){
 
 	return function isPlayerInside( args ){
-		var Player = require("Player");
-		if(Player.prototype.isPrototypeOf(args.m_fixtureA.GetBody().GetUserData()) ||
-			Player.prototype.isPrototypeOf(args.m_fixtureB.GetBody().GetUserData())){
+		if(args.m_fixtureA.GetBody().GetUserData().tag == "Player" ||
+			args.m_fixtureB.GetBody().GetUserData().tag == "Player"){
 			this.playerInside = true;
 		}
 	}

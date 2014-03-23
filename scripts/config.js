@@ -13,7 +13,6 @@ require.config({
 			"Canvas"    			: "game/Canvas",
 	 		"Ladder"				: "game/prefabs/Ladder",
 	 		"Generator"				: "game/prefabs/Generator",
-	 		"Water"					: "game/prefabs/Water",
 	 		"GrabPoint"				: "game/prefabs/GrabPoint",
 	 		"DeathZone"				: "game/prefabs/DeathZone",
 	 		"BouncingBall"			: "game/prefabs/BouncingBall",
@@ -22,7 +21,6 @@ require.config({
 	 		"Photo" 				: "game/prefabs/Photo",
 	 		"DarkPhoto" 			: "game/prefabs/DarkPhoto",
 	 		"Cube" 					: "game/prefabs/Cube",
-	 		"Spike" 				: "game/prefabs/Spike",
 	 		"Pikes" 				: "game/prefabs/Pikes",
 	 		"FallingDanger" 		: "game/prefabs/FallingDanger",
 	 		"Fire" 				    : "game/prefabs/Fire",
@@ -55,9 +53,9 @@ require.config({
 	 		"AddEvent"				: "game/functions/AddEventHandler",
 	 		"snapShoot" 			: "game/functions/snapShoot",
 	 		"createLevel" 			: "game/functions/createLevel",
+	 		"isOnScreen"			: "game/functions/Rendering/isOnScreen",
 	 		"followPlayer"			: "game/functions/Rendering/FollowPlayer",
 	 		"draw"					: "game/functions/Rendering/Draw",
-	 		"drawWater"				: "game/functions/Rendering/drawWater",
 	 		"waitForImagesLoaded"	: "game/functions/init/waitForImagesLoaded",
 	 		"Camera" 				: "game/Instances/Camera",
 	 		"LevelController"		: "game/Instances/LevelController",
@@ -72,7 +70,9 @@ require.config({
 	 		"ImageSprite" 			: "game/Components/ImageSprite",
 	 		"ShapeSprite" 			: "game/Components/ShapeSprite",
 	 		"SpriteSheet" 			: "game/Components/SpriteSheet",
-	 		"Animation" 			: "game/Components/Animation"
+	 		"Animation" 			: "game/Components/Animation",
+	 		"player_anim"			: "game/data/animations/player_anim",
+	 		"fallingDanger_anim"	: "game/data/animations/fallingDanger_anim",
 		}
 
 	, shim: {

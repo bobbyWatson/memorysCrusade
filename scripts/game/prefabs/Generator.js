@@ -1,4 +1,4 @@
-define(["Game", "Water"], function (Game, Water){
+define(["Game", "isOnScreen"], function (Game, isOnScreen){
 
     var Generator = function Generator(args){
 
@@ -6,21 +6,23 @@ define(["Game", "Water"], function (Game, Water){
         Game.ids++;
         this.waitingActions = [];
 
-        var x = args.x || 0;
-        var y = args.y || 0;
+        this.x = args.x || 0;
+        this.y = args.y || 0;
 
         this.model = args.model;
         this.params = args.params;
-        this.params.x = this.params.x === undefined ? x : this.params.x;
-        this.params.y = this.params.y === undefined ? y : this.params.y;
+        this.params.x = this.params.x === undefined ? this.x : this.params.x;
+        this.params.y = this.params.y === undefined ? this.y : this.params.y;
         this.popTime = args.time;
         this.timePast = 0;
         this.objNumber = 0;
     }
 
     Generator.prototype.actions = function(){
-
-        this.Generate();
+        if(this.isOnScreen())
+        {
+            this.Generate();
+        }
     }
 
     Generator.prototype.Generate = function(){
@@ -31,6 +33,8 @@ define(["Game", "Water"], function (Game, Water){
             Game.gameObjects.push(new this.model(this.params));
         }
     }
+
+    Generator.prototype.isOnScreen = isOnScreen
 
     return Generator;
 })

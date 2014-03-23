@@ -1,4 +1,4 @@
-define(["Game","RAF", "Camera", "Canvas","stats", "drawWater"], function (Game, RAF, Camera, Canvas,stats,drawWater){
+define(["Game","RAF", "Camera", "Canvas","stats"], function (Game, RAF, Camera, Canvas,stats){
 
 	var Run =  function Run (){
 		Run.instance = this;

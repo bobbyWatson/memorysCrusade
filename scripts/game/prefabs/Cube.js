@@ -1,5 +1,5 @@
-define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "ImageSprite", "AssetsController", "isPlayerOut"], 
-	function (Game, Box2D, doWaitingActions,MaskControler, grabCrates, draw, ImageSprite, AssetsController, isPlayerOut){
+define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "ImageSprite", "AssetsController", "isPlayerOut", "isOnScreen"], 
+	function (Game, Box2D, doWaitingActions,MaskControler, grabCrates, draw, ImageSprite, AssetsController, isPlayerOut, isOnScreen){
 
 	var Cube = function Cube (args){
 
@@ -13,8 +13,8 @@ define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "I
 		this.layer2 = MaskControler.ObjectHitbox;
 		this.x = args.x || 0;
 		this.y = args.y || 0;
-		this.height = args.height || 0.5;
-		this.width = args.width || 1;
+		this.height = args.height || 2;
+		this.width = args.width || 2;
 		this.hitBox = Game.createB2Object({
 			x 		: this.x,
 			y 		: this.y,
@@ -32,6 +32,7 @@ define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "I
 			y 		: this.y,
 			height	: this.height*1,
 			width 	: this.width*2,
+			density : 0,
 			dynamism: Box2D.Body.b2_dynamicBody,
 			shape 	: "box",
 			density : 0,
@@ -45,8 +46,8 @@ define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "I
 		jointDef.bodyB = this.actionbox.GetBody();
 		jointDef.localAnchorA.Set(0, 0);
 		Game.world.CreateJoint(jointDef);
-		// this.shapeSprite = new ShapeSprite({color : "rgb(255,255,255)", width : this.width, height : this.height, shape : "box"});
-		this.imageSprite = new ImageSprite({image : AssetsController.images.props_pierre, width : this.width*3, height : this.height*3,y:-1.5});
+		var img = AssetsController.images[Game.level + "Rock"];
+		this.imageSprite = new ImageSprite({image : img, width : this.width*2, height : this.height*2});
 		this.hitBox.GetBody().SetUserData(this);
 		this.actionbox.GetBody().SetUserData(this);
 		Game.on("gameObject"+this.id+"Collides", this.grabCrates, this);
@@ -58,10 +59,13 @@ define(["Game","B2D","doWaitingActions","MaskControler", "grabCrates","draw", "I
 	
 	Cube.prototype.isPlayerOut = isPlayerOut;
 	Cube.prototype.actions = function (){
-		this.doWaitingActions();
-		this.draw();
+		if(this.isOnScreen()){
+			this.doWaitingActions();
+			this.draw();
+		}
 	}
 	Cube.prototype.doWaitingActions = doWaitingActions;
 	Cube.prototype.draw = draw;
+	Cube.prototype.isOnScreen = isOnScreen;
 	return Cube;
 })

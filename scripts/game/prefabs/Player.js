@@ -1,8 +1,7 @@
-define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "SpriteSheet", "./game/data/animations/player_anim", "Animation", "AssetsController", "MaskControler", "Photo", "DarkPhoto", "changePhoto", "Canvas"],
+define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "doWaitingActions", "down", "up", "snapShoot", "draw", "death", "Spawn", "SpriteSheet", "player_anim", "Animation", "AssetsController", "MaskControler", "Photo", "DarkPhoto", "changePhoto", "Canvas"],
 	function (Game, Box2D, InputsHandler, move, control, jump, action, doWaitingActions, down, up, SnapShoot, draw, death, Spawn, SpriteSheet, player_anim, Animation, AssetsController, MaskControler, Photo, DarkPhoto, changePhoto, Canvas){
 
 	var Player = function Player (args){
-
 		var x = args.x || 15;
 		var y = args.y || 17;
 		this.width = 1;
@@ -16,7 +15,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.photos = [Photo, DarkPhoto];
 		this.tag = "Player";
 		this.speedX = 8;
-		this.speedY = 5;
+		this.speedY = 0.8;
 		this.jumpForce = 300;
 		this.canJump = true;
 		this.photoTaken = false;
@@ -24,6 +23,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.jumpButton = InputsHandler.keyCode.space;
 		this.isJumping = 0;
 		this.photoType = "Old";
+		this.moveVec;
 
 		this.spawn={x:x,y:y};
 		this.layer = MaskControler.Player;
@@ -33,7 +33,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 			y 		 : y,
 			radius	 : this.width,
 			dynamism : Box2D.Body.b2_dynamicBody,
-			friction : 0.5,
+			friction : 1,
 			density  : 0.2,
 			shape	 : "circle",
 			layer    : this.layer
@@ -54,7 +54,7 @@ define(["Game", "B2D", "InputsHandler", "move", "control", "jump", "action", "do
 		this.jointCenter.GetBody().SetUserData(this);
 		this.jointCenter.SetSensor(true);
 		this.jointCenter.GetBody().SetFixedRotation(true);
-		this.jointCenter.GetBody().hasGravity=false;
+		this.jointCenter.GetBody().hasGravity=true;
 
 		this.hitBox2 = Game.createB2Object({
 			x 		 : x,

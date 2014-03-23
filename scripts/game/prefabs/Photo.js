@@ -1,5 +1,5 @@
-define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControler", "draw", "ImageSprite", "AssetsController"],
-	function (Box2D, doWaitingActions,Game,elementIsInside,move,MaskControler, draw, ImageSprite, AssetsController){
+define(["B2D","doWaitingActions","Game","elementIsInside", "MaskControler", "draw", "ImageSprite", "AssetsController"],
+	function (Box2D, doWaitingActions,Game,elementIsInside,MaskControler, draw, ImageSprite, AssetsController){
 
 	var Photo = function Photo (args){
 
@@ -36,7 +36,6 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
 	}
 
 	Photo.prototype.actions = function (){
-		this.move({x:0,y:0});
 		this.minusTime()
 		this.draw();
 	}
@@ -58,8 +57,6 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
 	}
 	
 	Photo.prototype.elementIsInside = elementIsInside;
-	
-	Photo.prototype.move = move;
 	
 	Photo.prototype.doWaitingActions = doWaitingActions;
 

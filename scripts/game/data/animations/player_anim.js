@@ -13,12 +13,12 @@ define([], function (){
             transitionTo : [
                 {
                     animName : "runLeft",
-                    conditions : function(){if( body.GetLinearVelocity().x < -0.5 &&
+                    conditions : function(){if(parent.moveMev.x < -0.5 &&
                                                  parent.canJump){return true}else{return false}}
                 },
                 {
                     animName : "runRight",
-                    conditions : function(){if( body.GetLinearVelocity().x > 0.5 &&
+                    conditions : function(){if( parent.moveMev.x > 0.5 &&
                                                  parent.canJump){return true}else{return false}}
                 },
                 {
@@ -41,6 +41,10 @@ define([], function (){
                 {
                     animName : "pushRight",
                     conditions : function(){if(parent.joint !== undefined){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity){return true;}else{return false;}}
                 }
             ]
         },
@@ -54,12 +58,12 @@ define([], function (){
             transitionTo : [
                 {
                     animName : "runLeft",
-                    conditions : function(){if( body.GetLinearVelocity().x < -0.5 && 
+                    conditions : function(){if( parent.moveMev.x < -0.5 && 
                                                 parent.canJump){return true}else{return false}}
                 },
                 {
                     animName : "runRight",
-                    conditions : function(){if( body.GetLinearVelocity().x > 0.5 && 
+                    conditions : function(){if( parent.moveMev.x > 0.5 && 
                                                 parent.canJump){return true}else{return false}}
                 },
                 {
@@ -81,6 +85,10 @@ define([], function (){
                 {
                     animName : "pushLeft",
                     conditions : function(){if(parent.joint !== undefined){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity){return true;}else{return false;}}
                 }
             ]
         },
@@ -99,12 +107,12 @@ define([], function (){
             transitionTo : [
                 {
                     animName : "idleLeft",
-                    conditions : function(){if(body.GetLinearVelocity().x >= -0.5 && 
+                    conditions : function(){if(parent.moveMev.x >= -0.5 && 
                                                 parent.canJump){return true}else{return false}}
                 },
                 {
                     animName : "runLeft",
-                    conditions : function(){if( body.GetLinearVelocity().x < -0.5 &&
+                    conditions : function(){if( parent.moveMev.x < -0.5 &&
                                                  parent.canJump &&
                                                  parent.animation.currentSprite === parent.animation.currentAnim.sprites.length-1){return true}else{return false}}
                 },
@@ -115,6 +123,10 @@ define([], function (){
                 {
                     animName : "pushLeft",
                     conditions : function(){if(parent.joint !== undefined){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity){return true;}else{return false;}}
                 }
             ]
         },
@@ -133,12 +145,12 @@ define([], function (){
             transitionTo : [
                 {
                     animName : "idleRight",
-                    conditions : function(){if(body.GetLinearVelocity().x <= 0.5 &&
+                    conditions : function(){if(parent.moveMev.x <= 0.5 &&
                                                 parent.canJump){return true}else{return false}}
                 },
                 {
                     animName : "runRight",
-                    conditions : function(){if( body.GetLinearVelocity().x > 0.5 &&
+                    conditions : function(){if( parent.moveMev.x > 0.5 &&
                                                  parent.canJump &&
                                                  true &&
                                                  parent.animation.currentSprite === parent.animation.currentAnim.sprites.length-1){return true}else{return false}}
@@ -150,6 +162,10 @@ define([], function (){
                 {
                     animName : "pushRight",
                     conditions : function(){if(parent.joint !== undefined){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity){return true;}else{return false;}}
                 }
             ]
         },
@@ -171,6 +187,10 @@ define([], function (){
                 {
                     animName : "grabRight",
                     conditions : function(){if(parent.joint !== undefined){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity){return true;}else{return false;}}
                 }
             ] 
         },
@@ -192,6 +212,10 @@ define([], function (){
                 {
                     animName : "grabLeft",
                     conditions : function(){if(parent.joint !== undefined){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity){return true;}else{return false;}}
                 }
             ] 
         },
@@ -218,6 +242,10 @@ define([], function (){
                 {
                     animName : "runLeft",
                     conditions : function(){if(parent.canJump){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity){return true;}else{return false;}}
                 }
             ]
         },
@@ -244,6 +272,10 @@ define([], function (){
                 {
                     animName : "runRight",
                     conditions : function(){if(parent.canJump){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity){return true;}else{return false;}}
                 }
             ]
         },
@@ -396,6 +428,57 @@ define([], function (){
                 {
                     animName : "idleRight",
                     conditions : function(){if(parent.joint === undefined){return true;}else{return false;}}
+                }
+            ]
+        },
+        this.climbFix = {
+            time : 1,
+            sprites : [
+                {x : 0, y : 2837, width : 190, height : 263}
+            ],
+            transitionTo : [
+                {
+                    animName : "idleLeft",
+                    conditions : function(){if(body.hasGravity){return true;}else{return false;}}
+                },
+                {
+                    animName : "climb",
+                    conditions : function(){;if(!body.hasGravity &&(
+                                                parent.moveMev.y > 0.5 || parent.moveMev.y < -0.5)
+                                                ){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity &&
+                                                parent.moveMev.y < 0.5 && parent.moveMev.y > -0.5
+                                                ){return true;}else{return false;}}
+                }
+            ]
+        },
+        this.climb = {
+            time : 0.8,
+            sprites : [
+                {x : 0, y : 2837, width : 210, height : 290},
+                {x : 210, y : 2837, width : 210, height : 290},
+                {x : 0, y : 2837, width : 210, height : 290}
+            ],
+            transitionTo : [
+                {
+                    animName : "idleLeft",
+                    conditions : function(){if(body.hasGravity){return true;}else{return false;}}
+                },
+                {
+                    animName : "climb",
+                    conditions : function(){if(!body.hasGravity &&
+                                                (parent.moveMev.y > 0.5 || parent.moveMev.y < -0.5) &&
+                                                parent.animation.currentSprite === parent.animation.currentAnim.sprites.length-1
+                                                ){return true;}else{return false;}}
+                },
+                {
+                    animName : "climbFix",
+                    conditions : function(){if(!body.hasGravity &&
+                                                parent.moveMev.y < 0.5 && parent.moveMev.y > -0.5
+                                                ){return true;}else{return false;}}
                 }
             ]
         }

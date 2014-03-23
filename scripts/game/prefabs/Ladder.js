@@ -1,7 +1,8 @@
-define(["Game","B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions",  "draw", "ShapeSprite", "AssetsController", "MaskControler"],
- function (Game, Box2D, isPlayerInside, isPlayerOut, doWaitingActions, draw, ShapeSprite, AssetsController, MaskControler){
+define(["Game","B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions",  "draw", "ShapeSprite", "AssetsController", "MaskControler", "isOnScreen"],
+ function (Game, Box2D, isPlayerInside, isPlayerOut, doWaitingActions, draw, ShapeSprite, AssetsController, MaskControler, isOnScreen){
 	var Ladder = function Ladder (args){
 		this.id = Game.ids;
+		this.tag = "Ladder";
 		this.playerInside = false;
 		Game.ids++;
 		this.waitingActions = [];
@@ -30,8 +31,9 @@ define(["Game","B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions",  "dra
 		
 		Game.on("gameObject"+this.id+"EndCollides", this.isPlayerOut, this);
 
-		this.shapeSprite = new ShapeSprite({pattern : true, img : AssetsController.images.ladder, repeat : "repeat-y" , shape : "box", height : this.height, width : this.width});
-	}
+		var img = AssetsController.images[Game.level + "Ladder"];
+		this.shapeSprite = new ShapeSprite({pattern : true, image : img, repeat : "repeat-y" , shape : "box", height : this.height, width : this.width});
+}
 
 	Ladder.prototype.isPlayerInside = isPlayerInside;
 	
@@ -40,10 +42,14 @@ define(["Game","B2D", "isPlayerInside", "isPlayerOut", "doWaitingActions",  "dra
 	Ladder.prototype.doWaitingActions = doWaitingActions;
 
 	Ladder.prototype.draw = draw;
+	
+	Ladder.prototype.isOnScreen = isOnScreen;
 
 	Ladder.prototype.actions = function (){
-		this.doWaitingActions();
-		this.draw();
+		if(this.isOnScreen()){
+			this.doWaitingActions();
+			this.draw();
+		}
 	}
 
 	return Ladder;

@@ -9,10 +9,13 @@ define(["Game", "Ladder", "B2D"], function (Game, Ladder, Box2D){
 		}
 		if(actionObject){
 			if(Ladder.prototype.isPrototypeOf(actionObject)){
-				if(this.hasGravity){		
-					this.hasGravity = false;
+				if(this.hitBox.GetBody().hasGravity){
 					this.hitBox2.GetBody().hasGravity = false;
+					this.hitBox.GetBody().hasGravity = false;
+					this.jointCenter.GetBody().hasGravity = false;
 					this.hitBox.GetBody().SetLinearVelocity(new Box2D.Vec2(0,0));
+					this.hitBox2.GetBody().SetLinearVelocity(new Box2D.Vec2(0,0));
+					this.jointCenter.GetBody().SetLinearVelocity(new Box2D.Vec2(0,0));
 				}
 			}
 		}

@@ -12,7 +12,7 @@ define(["Canvas"], function (Canvas){
 		}
 		if(args.pattern){
 			this.pattern = true;
-			var pat = Canvas.ctx.createPattern(args.img, args.repeat);
+			var pat = Canvas.ctx.createPattern(args.image, args.repeat);
 			this.color = pat;
 		} else{
 			this.color = args.color || "rgb(180,180,180)";

@@ -1,5 +1,5 @@
-define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler", "draw","AssetsController", "ImageSprite", "GrabPoint"], 
-	function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler, draw, AssetsController, ImageSprite, GrabPoint){
+define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControler", "draw","AssetsController", "ImageSprite", "GrabPoint", "isOnScreen"], 
+	function (Game, Box2D, doWaitingActions, move, checkDirection, MaskControler, draw, AssetsController, ImageSprite, GrabPoint, isOnScreen){
 
 	var MovingPlateform = function MovingPlateform (args){
 		this.ctx = args.ctx;
@@ -18,7 +18,7 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 		this.margeY = this.y+this.distance;
 		this.margeX = this.x+this.distance;
 		this.width = args.width || 5;
-		this.height = args.height || 3;
+		this.height = args.height || 2;
 		this.layer = MaskControler.Plateform;
 		this.hitBox = Game.createB2Object({
 			x 		 : this.x,
@@ -31,17 +31,22 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 		});
 
 		this.hitBox.GetBody().SetUserData(this);
-		this.imageSprite = new ImageSprite({image : AssetsController.images.Props2, width : this.width+2, height : this.height+10,x:0,y:7, followRotation : true});
+		var img = AssetsController.images[Game.level + "Plateform"];
+		this.imageSprite = new ImageSprite({image : img, width : this.width+2, height : this.height+10,x:0,y:-2.5, followRotation : true});
 
 		Game.gameObjects.push(new GrabPoint({x : this.x - this.width , y : this.y - this.height/1.5, follow : this}));
 		Game.gameObjects.push(new GrabPoint({x : this.x + this.width , y : this.y - this.height/1.5, follow : this}));
 	}
 	MovingPlateform.prototype.actions = function()
 	{
-		this.doWaitingActions();
+
 		this.checkDirection();
 		this.move(this.vec2);
-		this.draw(this.ctx);
+
+		if(this.isOnScreen()){
+			this.doWaitingActions();
+			this.draw(this.ctx);
+		}
 	}
 	MovingPlateform.prototype.move = move;
 	
@@ -50,6 +55,8 @@ define(["Game","B2D", "doWaitingActions", "move", "checkDirection", "MaskControl
 	MovingPlateform.prototype.checkDirection = checkDirection;
 	
 	MovingPlateform.prototype.doWaitingActions = doWaitingActions;
+
+	MovingPlateform.prototype.isOnScreen = isOnScreen;
 
 	return MovingPlateform;
 })

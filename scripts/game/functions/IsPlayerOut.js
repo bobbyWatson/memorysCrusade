@@ -1,4 +1,4 @@
-define(["Game", "Player"], function (Game, Player){
+define(["Game"], function (Game){
 
 	return function isPlayerOut( args ){
 		if(args.m_fixtureA.GetBody().GetUserData().tag === "Player"){
@@ -8,7 +8,8 @@ define(["Game", "Player"], function (Game, Player){
 		} else{
 			return false;
 		}
-		player.hasGravity = true;
+		player.hitBox.GetBody().hasGravity = true;
+		player.jointCenter.GetBody().hasGravity = true;
 		player.hitBox2.GetBody().hasGravity = true;
 		this.playerInside = false;
 	}

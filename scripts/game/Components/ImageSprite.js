@@ -1,7 +1,6 @@
 define([], function (){
 
 	var ImageSprite = function (args) {
-
 		this.image = args.image;
 		this.spriteBox = {
 			x : args.x || 0,

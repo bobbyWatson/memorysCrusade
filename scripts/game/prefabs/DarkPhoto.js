@@ -1,5 +1,5 @@
-define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControler", "draw", "ImageSprite", "AssetsController", "Canvas", "Camera"],
-    function (Box2D, doWaitingActions,Game,elementIsInside,move,MaskControler, draw, ImageSprite, AssetsController, Canvas, Camera){
+define(["B2D","doWaitingActions","Game","elementIsInside", "MaskControler", "draw", "ImageSprite", "AssetsController", "Canvas", "Camera"],
+    function (Box2D, doWaitingActions,Game,elementIsInside,MaskControler, draw, ImageSprite, AssetsController, Canvas, Camera){
 
     var DarkPhoto = function DarkPhoto (args){
 
@@ -35,7 +35,6 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
     }
 
     DarkPhoto.prototype.actions = function (){
-        this.move({x:0,y:0});
         this.minusTime()
         this.imageSprite = this.toto();
         this.draw();
@@ -56,8 +55,6 @@ define(["B2D","doWaitingActions","Game","elementIsInside", "move", "MaskControle
             this.creator.photoTaken=false;
         }
     }
-    
-    DarkPhoto.prototype.move = move;
     
     DarkPhoto.prototype.doWaitingActions = doWaitingActions;
 

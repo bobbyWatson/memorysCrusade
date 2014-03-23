@@ -1,4 +1,5 @@
-define(["B2D","doWaitingActions","Game","touchPlayer", "MaskControler", "AssetsController", "ImageSprite", "draw"], function (Box2D, doWaitingActions,Game,touchPlayer,MaskControler,AssetsController,ImageSprite,draw){
+define(["B2D","doWaitingActions","Game","touchPlayer", "MaskControler", "AssetsController", "SpriteSheet", "Animation", "draw", "isOnScreen", "fallingDanger_anim"],
+ function (Box2D, doWaitingActions,Game,touchPlayer,MaskControler,AssetsController,SpriteSheet,Animation,draw, isOnScreen, fallingDanger_anim){
 
     var FallingDanger = function FallingDanger (args){
 
@@ -10,8 +11,10 @@ define(["B2D","doWaitingActions","Game","touchPlayer", "MaskControler", "AssetsC
         this.objects = [];
         this.x = args.x || 0;
         this.y = args.y || 0;
-        this.height = args.height || 1;
-        this.width = args.width || 1;
+        this.height = args.height || 1.5;
+        this.width = args.width || 1.5;
+        this.explode = false;
+        this.isDead = false;
 
         this.layer = MaskControler.Object;
         this.hitBox = Game.createB2Object({
@@ -24,8 +27,12 @@ define(["B2D","doWaitingActions","Game","touchPlayer", "MaskControler", "AssetsC
             layer    : this.layer
         });
 
-        this.imageSprite = new ImageSprite({image : AssetsController.images.fallingDanger, width : this.width*2 , height : this.height * 2});
+        var img = AssetsController.images[Game.level + "FallingDanger"];
+        var myAnim = new fallingDanger_anim({parent : this});
+        FallingDanger.prototype.spriteSheet = new SpriteSheet({defaultAnimation : "fall", image : img, y : -1.8, height : 3, width: 3, animations : myAnim});
 
+        this.animation = new Animation({parent: this});
+        
         this.hitBox.GetBody().SetUserData(this);
 
         this.hitBox.SetSensor(true);
@@ -35,31 +42,34 @@ define(["B2D","doWaitingActions","Game","touchPlayer", "MaskControler", "AssetsC
 
 
     FallingDanger.prototype.actions = function (){
-        this.draw();
-        this.doWaitingActions();
+        if(this.isOnScreen()){   
+            this.animation.checkNext();
+            this.animation.animate();
+            this.draw();
+            this.doWaitingActions();
+        }
     }
     
     FallingDanger.prototype.collision = function killPlayer(args){
         if(args.m_fixtureA.GetBody().GetUserData().tag === "Player"){
             var player = args.m_fixtureA.GetBody().GetUserData();
             this.waitingActions.push([this.killPlayer, [player]]);
-            console.log(player);
         }else if(args.m_fixtureB.GetBody().GetUserData().tag === "Player"){
             var player = args.m_fixtureB.GetBody().GetUserData();
             this.waitingActions.push([this.killPlayer, [player]]);
-            console.log(player);
         }
-        this.isDead = true;
+        this.explode = true;
     }
 
     FallingDanger.prototype.killPlayer = function killPlayer(player){
-        console.log(player);
         player.death(true);
     }
     
     FallingDanger.prototype.doWaitingActions = doWaitingActions;
 
     FallingDanger.prototype.draw = draw;
+
+    FallingDanger.prototype.isOnScreen = isOnScreen;
 
     return FallingDanger;
 })
