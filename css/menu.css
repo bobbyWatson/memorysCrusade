@@ -1,0 +1,48 @@
+body{
+	background-color: #000;
+    overflow: hidden;
+}
+#imageMain{
+    position: absolute;
+    clip:rect(0px 1920px 1080px 0px);
+    margin-left: -8px;
+    margin-top: -8px;
+}
+#imageMenu{
+    position: absolute;
+    display: none;
+    clip:rect(0px 1920px 1080px 0px);
+    margin-left: -8px;
+    margin-top: -8px;
+}
+#pressStartContainer{
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px; 
+    position:absolute;
+    z-index: 1;
+    width: 150px;
+    height: 90px;
+    top:760px;
+    left:790px;
+}#pressStart{
+    position:relative;
+    width: 0px;
+    height: 0px;
+
+}
+
+#quitContainer{
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px; 
+    position:absolute;
+    z-index: 1;
+    width: 150px;
+    height: 90px;
+    top:760px;
+    left:1350px;
+}
+#quit{
+
+    position:relative;
+    width: 0px;
+    height: 0px;
+    opacity: 0.9;
+}
