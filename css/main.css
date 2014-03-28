@@ -18,3 +18,20 @@ body{
     background-image: url("../assets/img/oldPhoto.png");
     background-size: 100%;
 }
+@font-face {
+    font-family: 'Wizard';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/fonts/wizard-webfont.eot');
+    src: url('../assets/fonts/wizard-webfont.otf') format('truetype'),
+         url('../assets/fonts/wizard-webfont.woff') format('woff'),
+         url('../assets/fonts/wizard-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../assets/fonts/wizard-webfont.svg#QuadrantaBold') format('svg');
+}
+.fontCreator{
+    background-color: rgb(255,255,255);
+    width: 50px;
+    height: 50px;
+    font-family: 'Wizard';
+    display: none;
+}

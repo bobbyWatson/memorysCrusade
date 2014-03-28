@@ -1,5 +1,5 @@
-define(["Game", "AssetsController","Run", "MovingPlateform", "BouncingBall", "Player", "GrabPoint", "DeathZone", "B2D", "Ladder", "StaticPlateform", "Camera", "Spawn", "Background", "Generator", "LevelController", "Cube", "Canvas", "Pikes", "FallingDanger"], 
-	function (Game, AssetsController, Run, MovingPlateform, BouncingBall, Player, GrabPoint, DeathZone, Box2D, Ladder, StaticPlateform, Camera, Spawn, Background, Generator, LevelController, Cube, Canvas, Pikes, FallingDanger){
+define(["Game", "AssetsController","Run", "MovingPlateform", "BouncingBall", "Player", "GrabPoint", "DeathZone", "B2D", "Ladder", "StaticPlateform", "Camera", "Spawn", "Background", "Generator", "LevelController", "Cube", "Canvas", "Pikes", "FallingDanger", "TextZone"], 
+	function (Game, AssetsController, Run, MovingPlateform, BouncingBall, Player, GrabPoint, DeathZone, Box2D, Ladder, StaticPlateform, Camera, Spawn, Background, Generator, LevelController, Cube, Canvas, Pikes, FallingDanger, TextZone){
 
 	return function Init(){
 		AssetsController.loadImages();
@@ -43,6 +43,7 @@ define(["Game", "AssetsController","Run", "MovingPlateform", "BouncingBall", "Pl
 			Game.gameObjects.push(new Generator({x : 120, y :5, model : FallingDanger, time : 60, params : {}}));
 			Game.gameObjects.push(new Generator({x : 60, y :5, model : FallingDanger, time : 60, params : {}}));
 			Game.gameObjects.push(new Ladder({x : 18, y:25,  height : 15}));
+			Game.gameObjects.push(new TextZone({triggerX : 105, triggerY:25,  triggerWidth : 13, triggerHeight : 7, textX : 125, textY : 18, textWidth : 20, textStr : "vas-y saute bonhomme"}));
 			var player = new Player({x : 40, y :0});
 			Game.gameObjects.push(player);
 			Camera.player = player;	
