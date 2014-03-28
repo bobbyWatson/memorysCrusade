@@ -2,7 +2,7 @@ define(["Camera", "Canvas"],function (Camera, Canvas){
 
     function isOnScreen (){
 
-        var MARGE= 200;
+        var MARGE= 300;
         var pos = {};
         if(this.hitBox !== undefined)
             pos = this.hitBox.GetBody().GetWorldCenter();
