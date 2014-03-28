@@ -13,7 +13,6 @@ define(["Game", "AssetsController","Run", "MovingPlateform", "BouncingBall", "Pl
 		Game.StartLevel = function StartLevel(){
 			var bd;
 			var nxt = Game.world.m_bodyList;
-			console.log(nxt);
 			while(nxt !== undefined && nxt !== null){
 				var bd = nxt;
 				nxt = bd.m_next;
