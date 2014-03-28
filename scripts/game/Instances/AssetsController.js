@@ -4,6 +4,8 @@ define(["waitForImagesLoaded"], function (waitForImagesLoaded){
 
         this.images = {};
         this.imagesName = [
+            "loadinBar.png",
+            "loadingBar_content.png",
             "bouncingBall.png",
             "level1.png",
             "level2.png",
@@ -59,6 +61,9 @@ define(["waitForImagesLoaded"], function (waitForImagesLoaded){
         img.onload = function(){_this.instance.images[name] = img};
     }
 
+    AssetsController.prototype.loadingPercent = function (){
+        return this.imagesName.length / Object.keys(this.images).length * 100;
+    }
 
     AssetsController.prototype.waitForImagesLoaded = waitForImagesLoaded;
 
